@@ -1,5 +1,11 @@
 setwd("/home/jc/Documents/ChatGPT from Wikipedia")
 listado <- data.frame(dir())
+# Original file names should be changed as follows:
+# Instead of "ChatGPT1.pdf" it should be the
+# "December52022.pdf" or as it is more convenient
+# to analyze the series with the best time format
+# Time formats in R is a topic I don't know anything
+# about, so we need to understand that.
 library(readtext)
 library(tm)
 DirSource()
