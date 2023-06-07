@@ -19,33 +19,26 @@ packages <- c("tidyverse","readtext","raster","sf","ggspatial","cluster","factoe
 pkg(packages)
 setwd("/home/alrier/Documentos/ChatGPT/ELLM/ELLM-ALRIER/Datas")
 listado <- data.frame(dir())
-# Obtener la información de los archivos
-file_info <- file.info(listado$dir)
-# Extraer la columna "mtime" (fecha y hora de modificación)
-listado$date <- file_info$mtime
-colnames(listado)[colnames(listado) == "dir.."] <- "Texto"
-DirSource()
-# Obtener el directorio de datos de readtext
 DATA_DIR <- system.file("extdata/", package = "readtext")
-textos <- readtext(listado$Texto)
+textos <- readtext(listado$dir..)
 textos$doc_id <- gsub("[^0-9-]", "", textos$doc_id)
-# Crear la columna "texto" con el nombre del documento
-# Assign unique document names
 textos$doc_id <- paste0("doc_", seq_along(textos$doc_id))
 Textos <- corpus(textos, docid_field = "doc_id")
 summary(Textos)
-docvars(Textos, "Date") <- listado$Texto
+docvars(Textos, "Date") <- listado$dir..
 aja <- data.frame(summary(Textos, n = length(Textos)))
+aja1 = aja #copia de seguridad
+aja1$Date <- gsub("\\s+", " ", aja1$Date)  # Eliminar espacios extra
+aja1$Date <- parse_date_time(aja1$Date, "%H:%M, %d-%m-%Y") #dar formato
+#aja1$Date <- format(aja1$Date, "%d %B %Y %H:%M") #Cambiaar orden en el formato
+library(lubridate)
+aja1$Date <- ymd_hms(aja1$Date)  # Convertir a clase "POSIXct"
+aja2 <- aja1 %>% arrange(Text)
 
-aja1 = aja
+ggplot(data = aja2, aes(x = Date, y = Sentences)) +
+   geom_line() + geom_point() + theme_bw() +
+   scale_x_datetime(labels = date_format("%b %Y"), 
+                    breaks = date_breaks("3 months")) +
+   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
-aja1$Date <- as.POSIXct(aja1$Date, format = "%H:%M, %d %B %Y")
 
-#aja$Text <- as.numeric(aja$Text)
-merged_df <- listado$date
-
-# Si deseas reemplazar la columna "date" existente en "aja" con la columna fusionada
-aja$date <- merged_df$date
-+aja2 <- aja %>% arrange(Text)
-ggplot(data = aja2, aes(x = Text, y = Sentences)) +
-  geom_line() + geom_point() + theme_bw()
