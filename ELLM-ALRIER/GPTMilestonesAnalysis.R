@@ -1,5 +1,3 @@
-setwd("/home/alrier/Documentos/ChatGPT/ELLM/ELLM/Data")
-listado <- data.frame(dir())
 pkg <- function(pkg){
    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
    if (length(new.pkg)) 
@@ -19,16 +17,35 @@ packages <- c("tidyverse","readtext","raster","sf","ggspatial","cluster","factoe
               "tidymodels","caret","lmtest","gapminder","png","rtweet","knitr")
 
 pkg(packages)
+setwd("/home/alrier/Documentos/ChatGPT/ELLM/ELLM-ALRIER/Datas")
+listado <- data.frame(dir())
+# Obtener la información de los archivos
+file_info <- file.info(listado$dir)
+# Extraer la columna "mtime" (fecha y hora de modificación)
+listado$date <- file_info$mtime
+colnames(listado)[colnames(listado) == "dir.."] <- "Texto"
 DirSource()
-# Get the data directory from readtext
+# Obtener el directorio de datos de readtext
 DATA_DIR <- system.file("extdata/", package = "readtext")
-textos <- readtext(listado$dir..)
+textos <- readtext(listado$Texto)
 textos$doc_id <- gsub("[^0-9-]", "", textos$doc_id)
-
-Textos <- corpus(textos)
+# Crear la columna "texto" con el nombre del documento
+# Assign unique document names
+textos$doc_id <- paste0("doc_", seq_along(textos$doc_id))
+Textos <- corpus(textos, docid_field = "doc_id")
 summary(Textos)
+docvars(Textos, "Date") <- listado$Texto
 aja <- data.frame(summary(Textos, n = length(Textos)))
-aja$Text <- as.numeric(aja$Text)
-aja2 <- aja %>% arrange(Text)
+
+aja1 = aja
+
+aja1$Date <- as.POSIXct(aja1$Date, format = "%H:%M, %d %B %Y")
+
+#aja$Text <- as.numeric(aja$Text)
+merged_df <- listado$date
+
+# Si deseas reemplazar la columna "date" existente en "aja" con la columna fusionada
+aja$date <- merged_df$date
++aja2 <- aja %>% arrange(Text)
 ggplot(data = aja2, aes(x = Text, y = Sentences)) +
   geom_line() + geom_point() + theme_bw()
