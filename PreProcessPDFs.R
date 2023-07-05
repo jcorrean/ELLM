@@ -7,6 +7,7 @@ textos$date <- str_sub(textos$doc_id, start = 5)
 textos$date <- as.Date(textos$date, format = "%d-%m-%Y")
 library(quanteda)
 Textos <- corpus(textos$text)
+docvars(Textos, "text") <- textos$text
 docvars(Textos, "Date") <- textos$date
 docvars(Textos, "Hour") <- textos$hour
 docvars(Textos, "Minute") <- textos$minute
