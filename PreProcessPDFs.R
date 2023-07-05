@@ -12,3 +12,14 @@ docvars(Textos, "Hour") <- textos$hour
 docvars(Textos, "Minute") <- textos$minute
 summary(Textos)
 versions <- data.frame(summary(Textos, n = length(Textos)))
+
+# By looking at the data, we noticed we had some typos 
+# in the name of the following rows, so we edit them manually
+# to make them coincide with their original dates
+versions$Date[69] <- "2022-12-06"
+versions$Date[72] <- "2022-12-06"
+versions$Date[79] <- "2022-12-06"
+versions$Date[83] <- "2022-12-06"
+versions$Date[94] <- "2022-12-06"
+versions$Date[478] <- "2022-12-06"
+
