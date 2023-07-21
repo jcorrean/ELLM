@@ -54,3 +54,5 @@ History$Day <- day(History$date)
 
 h <- History[order(History$date), ]
 h$doc_id <- 1:482
+History <- h
+rm(list = setdiff(ls(), "History"))
