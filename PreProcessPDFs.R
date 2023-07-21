@@ -48,3 +48,9 @@ History <- list(December2022, January2023, February2023, March2023, April2023, M
 History <- do.call(rbind, History)
 docvars(Textos, "Month") <- History$Month
 summary(Textos)
+library(lubridate)
+History$date <- as.Date(History$Date)  # Convert to Date object
+History$Day <- day(History$date)
+
+h <- History[order(History$date), ]
+h$doc_id <- 1:482
