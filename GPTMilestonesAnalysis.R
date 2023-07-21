@@ -1,4 +1,4 @@
-setwd("/home/jc/Documents/ChatGPT from Wikipedia")
+setwd("/home/jc/Documents/GitHub/ELLM/ELLM-ALRIER/Datas")
 listado <- data.frame(dir())
 # Original file names should be changed as follows:
 # Instead of "ChatGPT1.pdf" it should be the
@@ -17,7 +17,7 @@ textos$doc_id <- gsub("[^0-9-]", "", textos$doc_id)
 
 
 library(quanteda)
-Textos <- corpus(textos)
+Textos <- corpus(textos$text)
 summary(Textos)
 docvars(Textos, "Date") <- listado$dir..
 aja <- data.frame(summary(Textos, n = length(Textos)))
