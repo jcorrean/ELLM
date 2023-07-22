@@ -1,4 +1,8 @@
 load("~/Documents/GitHub/ELLM/TopTermsByMonth.RData")
+summary(Textos[479:482])
+library(quanteda.textstats)
+head(textstat_keyness(Dec2))
+
 
 library(quanteda)
 k1 <- data.frame(kwic(dec2022, pattern = phrase("artificial intelligence")))
