@@ -13,6 +13,8 @@ Textos2 <- tokens(Textos,
                   remove_symbols = TRUE) %>%  
   tokens_remove(stopwords("english"))
 
+Dec <- corpus_subset(Textos, Month == "December")
+
 # Our Keyword-in-context search is 
 # organized as follows: 1) unigrams, 2) ngrams, and 
 # 3) companies or commercial words.
