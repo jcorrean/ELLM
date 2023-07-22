@@ -3,15 +3,61 @@ library(quanteda)
 summary(Textos)
 docvars(Textos, "Month") <- History$Month
 summary(Textos)
-textos <- tokens(Textos)
-textos
-# Remove tokens matching the website URL pattern
-# This will remove tokens that start with "http://" or "https://" followed by any characters
-textos <- tokens_remove(textos, pattern = c("http://*", "https://*", "www.*", "*.htm", "*.html", "*.com"))
+Textos2 <- tokens(Textos, remove_numbers = TRUE, remove_punct = TRUE) %>%  
+  tokens_remove(stopwords("english")) %>% dfm()
+Textos4 <- dfm_remove(Textos2, c("http://*", 
+                                 "https://*", 
+                                 "www.*", 
+                                 "*.htm", 
+                                 "*.html", 
+                                 "*.com", 
+                                 "wikipedia", 
+                                 "url", 
+                                 "*:*",
+                                 "$",
+                                 "htt",
+                                 "http",
+                                 "https"))
 
-
-ave <- tokens(textos, remove_numbers = TRUE, remove_punct = TRUE) %>%  dfm()
-ave2 <- dfm_remove(ave, stopwords("english"))
-TF <- data.frame(topfeatures(ave2, length(ave2)))
+TF <- data.frame(topfeatures(Textos4, length(Textos4)))
 colnames(TF)[1] <- "Freq"
 TF$Ngram <- rownames(TF)
+
+Dec <- corpus_subset(Textos, Month == "December")
+
+summary(Dec)
+
+
+DEC_dfm <- tokens(Dec, remove_punct = TRUE, remove_numbers = TRUE) %>%
+  tokens_remove(c("http://*", 
+                  "https://*", 
+                  "www.*", 
+                  "*.htm", 
+                  "*.html", 
+                  "*.com", 
+                  "wikipedia", 
+                  "url", 
+                  "*:*",
+                  "$",
+                  "htt",
+                  "http",
+                  "https", stopwords("english"))) %>%
+  tokens_group(groups = Date) %>%
+  dfm()
+
+DecemberTopFeatures <- data.frame(topfeatures(DEC_dfm, n = length(DEC_dfm), groups = Date))
+
+#library(quanteda.textstats)
+# Calculate keyness and determine Trump as target group
+#result_keyness <- textstat_keyness(DEC_dfm, target = "2022-12-31")
+
+#library(quanteda.textplots)
+# Plot estimated word keyness
+#textplot_keyness(result_keyness) 
+
+#DecemberTopFeatures <- data.frame(topfeatures(DEC_dfm, n = length(DEC_dfm), groups = Date))
+
+
+#DecemberTopFeatures$Diff <- DecemberTopFeatures$X2022.12.05 - DecemberTopFeatures$X2022.12.31
+
+#hist(DecemberTopFeatures$Diff)
