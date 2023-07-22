@@ -24,8 +24,14 @@ colnames(TF)[1] <- "Freq"
 TF$Ngram <- rownames(TF)
 
 Dec <- corpus_subset(Textos, Month == "December")
+Jan <- corpus_subset(Textos, Month == "January")
+Feb <- corpus_subset(Textos, Month == "February")
+Mar <- corpus_subset(Textos, Month == "March")
+Apr <- corpus_subset(Textos, Month == "April")
+May <- corpus_subset(Textos, Month == "May")
 
 summary(Dec)
+summary(Jan)
 
 
 DEC_dfm <- tokens(Dec, remove_punct = TRUE, remove_numbers = TRUE) %>%
