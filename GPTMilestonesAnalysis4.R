@@ -5,6 +5,12 @@ k1 <- data.frame(kwic(dec2022, pattern = phrase("artificial intelligence")))
 k2 <- data.frame(kwic(dec2022, pattern = phrase("prototype")))
 k3 <- data.frame(kwic(dec2022, pattern = phrase("large language model")))
 k4 <- data.frame(kwic(dec2022, pattern = phrase("generative pre-trained transformer")))
+k5 <- data.frame(kwic(dec2022, pattern = phrase("GPT-3.5 architecture")))
+k6 <- data.frame(kwic(dec2022, pattern = phrase("architecture")))
+k7 <- data.frame(kwic(mar2023, pattern = phrase("Microsoft Azure")))
+
+k1$docname <- as.numeric(gsub("[^0-9]", "", k1$docname))
+
 
 library(quanteda.textstats)
 freq_table <- textstat_frequency(Jan2)
