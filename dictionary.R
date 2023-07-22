@@ -40,7 +40,48 @@ dict <- dictionary(list(
              "bing chat",
              "goodhart's law")))
 
-dfmat_inaug_post1991_dict <- tokens(corp_inaug_post1991) |>
-  tokens_lookup(dictionary = dict) |>
-  dfm()
-dfmat_inaug_post1991_dict
+DEC <- tokens(Dec,
+              remove_punct = TRUE, 
+              remove_numbers = TRUE,
+              remove_url = TRUE, 
+              remove_symbols = TRUE) %>%
+  tokens_remove(c("http://*", 
+                  "https://*", 
+                  "www.*", 
+                  "*.htm", 
+                  "*.html", 
+                  "*.com", 
+                  "wikipedia", 
+                  "url", 
+                  "*:*",
+                  "$",
+                  "htt",
+                  "http",
+                  "https", 
+                  stopwords("english"))) %>%
+  tokens_group(groups = Date) 
+
+DecemberSelectedFeatures <- DEC  %>% 
+  tokens_lookup(dictionary = dict) DEC_dfm <- tokens(Dec, 
+                  remove_punct = TRUE, 
+                  remove_numbers = TRUE,
+                  remove_url = TRUE, 
+                  remove_symbols = TRUE) %>%
+  tokens_remove(c("http://*", 
+                  "https://*", 
+                  "www.*", 
+                  "*.htm", 
+                  "*.html", 
+                  "*.com", 
+                  "wikipedia", 
+                  "url", 
+                  "*:*",
+                  "$",
+                  "htt",
+                  "http",
+                  "https", stopwords("english"))) %>%
+  tokens_group(groups = Date) 
+
+DecemberSelectedFeatures <- data.frame(dfm(DecemberSelectedFeatures))
+
+DecemberSelectedFeatures
