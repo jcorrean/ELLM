@@ -2,8 +2,13 @@ load("~/Documents/GitHub/ELLM/HistoricalData.RData")
 library(quanteda)
 summary(Textos)
 docvars(Textos, "Month") <- History$Month
+docvars(Textos, "Doc_ID") <- History$doc_id
 summary(Textos)
-Textos2 <- tokens(Textos, remove_numbers = TRUE, remove_punct = TRUE) %>%  
+Textos2 <- tokens(Textos, 
+                  remove_numbers = TRUE, 
+                  remove_punct = TRUE, 
+                  remove_url = TRUE, 
+                  remove_symbols = TRUE) %>%  
   tokens_remove(stopwords("english")) %>% dfm()
 Textos4 <- dfm_remove(Textos2, c("http://*", 
                                  "https://*", 
@@ -30,11 +35,12 @@ Mar <- corpus_subset(Textos, Month == "March")
 Apr <- corpus_subset(Textos, Month == "April")
 May <- corpus_subset(Textos, Month == "May")
 
-summary(Dec)
-summary(Jan)
 
-
-DEC_dfm <- tokens(Dec, remove_punct = TRUE, remove_numbers = TRUE) %>%
+DEC_dfm <- tokens(Dec, 
+                  remove_punct = TRUE, 
+                  remove_numbers = TRUE,
+                  remove_url = TRUE, 
+                  remove_symbols = TRUE) %>%
   tokens_remove(c("http://*", 
                   "https://*", 
                   "www.*", 
