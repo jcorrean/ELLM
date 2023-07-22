@@ -4,6 +4,8 @@ summary(Textos[479:482])
 DecMay <- corpus_subset(Textos, 
                              Date %in% c("2022-12-05", "2023-05-30"))
 
+summary(DecMay)
+
 remover <- list(textos)
 
 pres_dfm <- tokens(DecMay, remove_punct = TRUE) %>%
