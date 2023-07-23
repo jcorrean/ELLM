@@ -7,8 +7,8 @@ docvars(Textos, "Month") <- History$Month
 docvars(Textos, "Doc_ID") <- History$doc_id
 summary(Textos)
 
-Dec <- corpus_subset(Textos, Month == "December")
-Textos2 <- tokens(Dec, 
+Jan <- corpus_subset(Textos, Month == "January")
+Textos2 <- tokens(Jan, 
                   remove_numbers = TRUE, 
                   remove_punct = TRUE, 
                   remove_url = TRUE, 
@@ -91,3 +91,4 @@ selectedkeywords <- do.call(rbind, dataframes_list)
 
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
+selectedkeywords$Month <- "January 2023"
