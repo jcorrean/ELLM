@@ -47,6 +47,7 @@ versions <- data.frame(summary(Textos, n = length(Textos)))
 History <- list(December2022, January2023, February2023, March2023, April2023, May2023)
 History <- do.call(rbind, History)
 docvars(Textos, "Month") <- History$Month
+docvars(Textos, "Date") <- History$Date
 summary(Textos)
 library(lubridate)
 History$date <- as.Date(History$Date)  # Convert to Date object
