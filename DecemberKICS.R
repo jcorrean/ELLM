@@ -91,3 +91,4 @@ selectedkeywords <- do.call(rbind, dataframes_list)
 
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
+selectedkeywords$Month <- "December 2022"
