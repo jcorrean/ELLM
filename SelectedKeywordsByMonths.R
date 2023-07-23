@@ -17,3 +17,8 @@ rm(selectedkeywords)
 load("MaySelectedKeywords.RData")
 May2023 <- selectedkeywords
 rm(selectedkeywords)
+
+df <- list(December2022, January2023, February2023, March2023, April2023, May2023)
+df <- do.call(rbind, df)
+
+rm(list = setdiff(ls(), "df"))
