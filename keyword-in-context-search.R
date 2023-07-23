@@ -13,16 +13,15 @@ Textos2 <- tokens(Textos,
                   remove_symbols = TRUE) %>%  
   tokens_remove(stopwords("english"))
 
-Dec <- corpus_subset(Textos, Month == "December")
 
 # Our Keyword-in-context search is 
 # organized as follows: 1) unigrams, 2) ngrams, and 
-# 3) companies or commercial words.
+# 3) organizations or commercial words.
 
 k1 <- data.frame(kwic(Textos2, pattern = "ai"))
 k2 <- data.frame(kwic(Textos2, pattern = "api"))
 k3 <- data.frame(kwic(Textos2, pattern = "algorithm"))
-k4 <- data.frame(kwic(Textos2, pattern = "android"))
+k4 <- data.frame(kwic(Textos2, pattern = "prompt"))
 k4 <- data.frame(kwic(Textos2, pattern = "architecture"))
 k5 <- data.frame(kwic(Textos2, pattern = "bias"))
 k6 <- data.frame(kwic(Textos2, pattern = "chat"))
