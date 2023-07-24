@@ -1,6 +1,5 @@
 load("/home/jc/Documents/GitHub/ELLM/SelectedKeywords.RData")
-#a <- data.frame(summary(Textos, n = length(Textos)))
-#table(a$Month)
+df <- selectedkeywords
 df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
 #Network <- Network[!duplicated(Network[c(1,2)]),]
