@@ -82,6 +82,7 @@ kc18 <- data.frame(kwic(Textos2, pattern = "shopify"))
 kc19 <- data.frame(kwic(Textos2, pattern = "wolfram"))
 kc20 <- data.frame(kwic(Textos2, pattern = "yandex"))
 kc21 <- data.frame(kwic(Textos2, pattern = "zapier"))
+kc22 <- data.frame(kwic(Textos2, pattern = phrase("microsoft azure")))
 
 dataframes_list <- mget(ls(pattern = "^k"))
 all_objects <- ls()
