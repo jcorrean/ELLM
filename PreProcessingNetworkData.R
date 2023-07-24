@@ -126,7 +126,7 @@ V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
 E(bn2)$color <- "lightgrey"
 
 # Create a layout for the graph with the desired rotation
-layout <- layout_as_bipartite(bn2)
+layout <- layout_as_tree(bn2)
 rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates and negate y
 
 # Plot the graph with the rotated layout and vertex labels
