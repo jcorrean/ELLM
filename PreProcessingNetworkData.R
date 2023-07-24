@@ -1,7 +1,45 @@
 load("/home/jc/Documents/GitHub/ELLM/SelectedKeywords.RData")
-df <- selectedkeywords
 df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
+
+library(igraph)
+bn2 <- graph.data.frame(Network,directed=FALSE)
+bipartite.mapping(bn2)
+V(bn2)$type <- bipartite_mapping(bn2)$type
+V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
+V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
+V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
+#V(bn2)$size <- sqrt(igraph::degree(bn2))
+E(bn2)$color <- "lightgrey"
+plot(bn2, 
+     vertex.label = NA, 
+     layout = layout_as_bipartite, 
+     main = "")
+
+table(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
+mean(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
+var(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
+min(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
+max(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
+edge_density(bn2)
+
+bn2.pr <- bipartite.projection(bn2)
+Months <- bn2.pr$proj2
+MonthsCentrality <- data.frame(Degree = degree(Months),
+                               Closeness = closeness(Months),
+                               Betweennes = betweenness(Months),
+                               Eigen = eigen_centrality(Months))
+
+Keywords <- bn2.pr$proj1
+KeywordsCentrality <- data.frame(Degree = degree(Keywords),
+                               Closeness = closeness(Keywords),
+                               Betweennes = betweenness(Keywords),
+                               Eigen = eigen_centrality(Keywords))
+KeywordsCentrality <- KeywordsCentrality[1:4]
+
+
+
+
 #Network <- Network[!duplicated(Network[c(1,2)]),]
 
 load("StructuredData.RData")
@@ -29,14 +67,31 @@ keywords <- c("ai", "api", "algorithm", "prompt", "architecture",
 "opentable", "openai", "reddit", "snapchat", "shopify", "wolfram",
 "yandex", "zapier", "goodhart's law") 
 
-toks_inside <- tokens_keep(TOKS, pattern = SoftSkills, window = 0)
+toks_inside <- tokens_keep(TOKS, pattern = keywords, window = 0)
 DTM2 <- dfm(toks_inside)
+summary(DTM2)
 
 DTM3 <- as.matrix(DTM2)
 colnames(DTM3)
+row_names <- c(rep("December 2022", 203),
+               rep("January 2023", 40),
+               rep("February 2023", 47),
+               rep("March 2023", 94),
+               rep("April 2023", 42),
+               rep("May 2023", 56))
+
+rownames(DTM3) <- row_names
 
 library(bipartite)
-plotweb(DTM3, method = "normal", col.high = "lightgreen", col.low = "pink", col.interaction = "lightgrey")
+plotweb(DTM3, method = "normal", 
+        col.high = "lightgreen", 
+        bor.col.high = "lightgreen",
+        col.low = "pink", 
+        bor.col.low = "pink",
+        col.interaction = "grey90",
+        bor.col.interaction = "grey90",
+        low.lablength = 0,
+        labsize = 2)
 
 
 
