@@ -84,12 +84,14 @@ kc20 <- data.frame(kwic(Textos2, pattern = "yandex"))
 kc21 <- data.frame(kwic(Textos2, pattern = "zapier"))
 kc22 <- data.frame(kwic(Textos2, pattern = phrase("microsoft azure")))
 
-selectedkeywords$doc_id <- History$doc_id
+
 dataframes_list <- mget(ls(pattern = "^k"))
 all_objects <- ls()
 
 # Use do.call with rbind to merge all the dataframes
 selectedkeywords <- do.call(rbind, dataframes_list)
+
+
 
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
