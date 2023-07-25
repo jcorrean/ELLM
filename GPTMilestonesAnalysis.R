@@ -7,7 +7,8 @@ summary(Textos)
 docvars(Textos, "Date") <- History$Date
 aja <- data.frame(summary(Textos, n = length(Textos)))
 summary(Textos)
-if (require(ggplot2)) ggplot(data = aja, aes(x = Date, y = Sentences)) +
+library(ggplot2)
+ggplot(data = aja, aes(x = Date, y = Sentences)) +
   geom_line() + geom_point() + theme_bw() + 
   scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") +
   theme(axis.text.x = element_text(size = 15, color = "black"),  

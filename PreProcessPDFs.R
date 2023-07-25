@@ -19,6 +19,6 @@ docvars(Textos, "Month") <- versions$Month
 docvars(Textos, "Date") <- versions$Date
 summary(Textos)
 History <- versions
-rm(list = setdiff(ls(), "History"))
+rm(list = setdiff(ls(), c("History", "Textos")))
 
 

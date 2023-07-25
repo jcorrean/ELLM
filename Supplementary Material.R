@@ -2,6 +2,21 @@
 # paper titled: "Chat GPT: A data-driven analysis of its
 # public understanding."
 
+# INSTRUCTIONS FOR REPRODUCING THIS SCRIPT
+# FIRST: You can clone our GitHub repo and 
+# set the cloned folder as your working directory
+# SECOND: Make sure you have installed R and RStudio
+# in your computer. In addition, make sure to have 
+# installed the following libraries: 
+# 1) readtext
+# 2) tm
+# 3) dplyr
+# 4) quanteda
+# 5) lubridate
+# 6) ggplot2
+# 7) 
+
+
 # Authors' Disclaimer: 
 # This script has the explicit goal of making the paper
 # as reproducible as possible for other researchers. 
@@ -26,3 +41,17 @@ source("/home/jc/Documents/GitHub/ELLM/PreProcessPDFs.R")
 # 480 rows and 7 variables
 variable.names(History)
 head(History)
+# This data frame is saved with the name
+# StructuredData.RData which is the input for 
+# our next step
+
+#### THIRD STEP: GPT Milestone Analysis
+source("/home/jc/Documents/GitHub/ELLM/GPTMilestonesAnalysis.R")
+# The result from this third step generates the 
+# figure inserted as Figure 2 in our published document.
+# It conveys the message that the documentation
+# of Chat GPT increased its length as captured by
+# the number of sentences of wikipedia's revisions
+
+#### FOURTH STEP: Keywords-in-context search
+source("/home/jc/Documents/GitHub/ELLM/")

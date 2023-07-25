@@ -3,7 +3,25 @@ df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
 network <- Network[!duplicated(Network[c(1,2)]),]
 
+table(Network$pattern)
+table(Network$Month)
+table(network$pattern)
+table(network$Month)
+
 library(igraph)
+bn2 <- graph.data.frame(network,directed=FALSE)
+igraph::degree(bn2)
+bipartite.mapping(bn2)
+V(bn2)$type <- bipartite_mapping(bn2)$type
+V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
+V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
+#V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
+V(bn2)$size <- 3.5
+E(bn2)$color <- "grey"
+plot(bn2, 
+     vertex.label = NA, 
+     layout = layout_nicely, 
+     main = "")
 table(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
 mean(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
 var(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
@@ -45,12 +63,13 @@ TopEigenvector <- head(KeywordsCentrality[order(-KeywordsCentrality$Eigen.vector
 load("/home/jc/Documents/GitHub/ELLM/StructuredData.RData")
 
 library(quanteda)
-TOKS <- corpus(History$text) %>% 
-  tokens(remove_numbers = TRUE, 
-         remove_punct = TRUE, 
-         remove_url = TRUE,
-         remove_symbols = TRUE) %>% 
-  tokens_remove(stopwords("en"))
+TOKS <- corpus(History$revision) %>% 
+tokens(remove_numbers = TRUE, 
+      remove_punct = TRUE, 
+      remove_url = TRUE,
+      remove_symbols = TRUE) %>% 
+      tokens_remove(stopwords("en"))
+
 DTM <- dfm(TOKS, tolower = TRUE)
 
 keywords <- TopEigenvector$Term
