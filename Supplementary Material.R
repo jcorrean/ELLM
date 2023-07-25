@@ -21,3 +21,4 @@ source("/home/jc/Documents/GitHub/ELLM/OpenPDFs.R")
 
 #### SECOND STEP: Pre-process the PDF documents
 source("/home/jc/Documents/GitHub/ELLM/PreProcessPDFs.R")
+# The result from this second step generates 
