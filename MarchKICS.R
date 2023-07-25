@@ -1,10 +1,7 @@
 # Open the dataset
-load("~/Documents/GitHub/ELLM/HistoricalData.RData")
+load("~/Documents/GitHub/ELLM/StructuredData.RData")
 # Keyword-in-context search
 library(quanteda)
-summary(Textos)
-docvars(Textos, "Month") <- History$Month
-docvars(Textos, "Doc_ID") <- History$doc_id
 summary(Textos)
 
 Mar <- corpus_subset(Textos, Month == "March")

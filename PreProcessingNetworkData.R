@@ -63,18 +63,24 @@ TopEigenvector <- head(KeywordsCentrality[order(-KeywordsCentrality$Eigen.vector
 load("/home/jc/Documents/GitHub/ELLM/StructuredData.RData")
 
 library(quanteda)
-TOKS <- corpus(History$revision) %>% 
-tokens(remove_numbers = TRUE, 
+TOKS <- corpus(History$revision) 
+docvars(TOKS, "Date") <- History$Date
+summary(TOKS)
+
+TOKS2 <- TOKS %>% tokens(remove_numbers = TRUE, 
       remove_punct = TRUE, 
       remove_url = TRUE,
       remove_symbols = TRUE) %>% 
       tokens_remove(stopwords("en"))
 
-DTM <- dfm(TOKS, tolower = TRUE)
+
+class(TOKS2)
+
+DTM <- dfm(TOKS2, tolower = TRUE)
 
 keywords <- TopEigenvector$Term
 
-toks_inside <- tokens_keep(TOKS, pattern = keywords, window = 0)
+toks_inside <- tokens_keep(TOKS2, pattern = keywords, window = 0)
 DTM2 <- dfm(toks_inside)
 summary(DTM2)
 
@@ -99,6 +105,14 @@ plotweb(DTM3, method = "normal",
         bor.col.interaction = "grey90",
         low.lablength = 0,
         labsize = 2)
+
+
+## Right at this moment, we noticed that the 
+# only terms included in the bipartite visualization
+# were unigrams, so bigrams and trigrams are not
+# present. We need an extra work to solve that problem
+
+
 
 
 library(igraph)
