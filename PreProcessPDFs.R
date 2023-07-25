@@ -1,4 +1,4 @@
-load("~/Documents/GitHub/ELLM/DataPreOpen.RData")
+load("~/Documents/GitHub/ELLM/Results_Step1.RData")
 library(stringr)
 # Extract the hour, day, month, and year from the string
 textos$hour <- str_sub(textos$doc_id, start = 1, end = 2)
