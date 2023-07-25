@@ -21,4 +21,8 @@ source("/home/jc/Documents/GitHub/ELLM/OpenPDFs.R")
 
 #### SECOND STEP: Pre-process the PDF documents
 source("/home/jc/Documents/GitHub/ELLM/PreProcessPDFs.R")
-# The result from this second step generates 
+# The result from this second step generates the 
+# following single data frame: History with
+# 480 rows and 7 variables
+variable.names(History)
+head(History)
