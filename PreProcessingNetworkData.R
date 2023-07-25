@@ -4,21 +4,6 @@ Network <- df[,c(7,8)]
 network <- Network[!duplicated(Network[c(1,2)]),]
 
 library(igraph)
-bn2 <- graph.data.frame(network, directed = FALSE)
-bipartite.mapping(bn2)
-V(bn2)$type <- bipartite_mapping(bn2)$type
-V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
-V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
-E(bn2)$color <- "lightgrey"
-
-# Plot the graph using plot
-plot(bn2, vertex.label = NA, layout = layout_as_bipartite, main = "")
-
-# Rotate the plot 90 degrees clockwise
-tkplot_rotate(90)
-
-
 table(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
 mean(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
 var(igraph::degree(bn2,v=V(bn2)[type==FALSE]))
@@ -97,32 +82,13 @@ plotweb(DTM3, method = "normal",
         labsize = 2)
 
 
-
-library(igraph)
-bn2 <- graph.data.frame(network,directed=FALSE)
-bipartite.mapping(bn2)
-V(bn2)$type <- bipartite_mapping(bn2)$type
-V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
-V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
-V(bn2)$size <- sqrt(igraph::degree(bn2))
-E(bn2)$color <- "lightgrey"
-plot(bn2, 
-     vertex.label = NA, 
-     layout = layout_as_bipartite, 
-     main = "")
-
-table(Network$keyword)
-Network <- Network[!duplicated(Network[c(1,2)]),]
-
-
 library(igraph)
 bn2 <- graph.data.frame(network, directed = FALSE)
 bipartite.mapping(bn2)
 V(bn2)$type <- bipartite_mapping(bn2)$type
 V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
 V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.8, 1)
+V(bn2)$label.cex <- ifelse(V(bn2)$type, 4, 4)
 E(bn2)$color <- "lightgrey"
 
 # Create a layout for the graph with the desired rotation
@@ -131,3 +97,18 @@ rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates a
 
 # Plot the graph with the rotated layout and vertex labels
 plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "")
+
+bn2 <- graph.data.frame(network, directed = FALSE)
+bipartite.mapping(bn2)
+V(bn2)$type <- bipartite_mapping(bn2)$type
+V(bn2)$color <- ifelse(V(bn2)$type, "red", "green")
+V(bn2)$shape <- ifelse(V(bn2)$type, "circle", "square")
+V(bn2)$label.cex <- ifelse(V(bn2)$type, 3, 1)
+E(bn2)$color <- "lightgrey"
+
+# Create a layout for the graph with the desired rotation
+layout <- layout_as_tree(bn2)
+rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates and negate y
+
+# Plot the graph with the rotated layout, vertex labels, and smaller vertex size
+plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "", vertex.size = 5)
