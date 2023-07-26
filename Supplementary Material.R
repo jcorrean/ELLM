@@ -53,5 +53,17 @@ source("/home/jc/Documents/GitHub/ELLM/GPTMilestonesAnalysis.R")
 # of Chat GPT increased its length as captured by
 # the number of sentences of wikipedia's revisions
 
-#### FOURTH STEP: Keywords-in-context search
-source("/home/jc/Documents/GitHub/ELLM/")
+#### FOURTH STEP: Keywords-in-context search by month
+source("/home/jc/Documents/GitHub/ELLM/SelectedKeywordsByMonths.R")
+# The result from this fourth step is an extended data frame (df)
+# that shows where our selected keywords occurred in each 
+# sampled document. We will take this data frame as input
+# for our next step, This data frame is saved as
+# SelectedKeywords.RData which is used as input in the
+# next step.
+
+#### FIFTH STEP: Pre-Processing Network Data
+source("/home/jc/Documents/GitHub/ELLM/PreProcessingNetworkData.R")
+# The result from this fifth step is a bipartite network that 
+# shows how some selected terms (regardless of they are unigrams,
+# bigrams, or ngrams) are selectively tied to specific months.
