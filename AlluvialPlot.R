@@ -19,9 +19,9 @@ WF <- WF %>%
 unique(WF$pattern)
 
 library(alluvial)
-set.seed(987654) # for nice colours
+set.seed(4421266) # for nice colours
 num_colors <- 53
-cols <- hsv(h = runif(num_colors), s = runif(num_colors, 0.2, 1), v = runif(num_colors, 0.2, 1))
+cols <- hsv(h = runif(num_colors), s = runif(num_colors, 0.1, 1), v = runif(num_colors, 0.1, 1))
 alluvial_ts(WF, wave = .3, ygap = 5, col = cols, plotdir = 'centred', alpha=.9,
             grid = TRUE, grid.lwd = 5, xmargin = 0.2, lab.cex = .7, xlab = '',
             ylab = '', border = NA, axis.cex = .8, leg.cex = .7,
