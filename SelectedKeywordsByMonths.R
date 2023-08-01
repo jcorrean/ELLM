@@ -3,25 +3,25 @@ load("DecemberKeywords.RData")
 December2022 <- DecemberKeywords
 rm(DecemberKeywords)
 
-load("JanuarySelectedKeywords.RData")
+load("JanuaryKeywords.RData")
 January2023 <- JanuaryKeywords
 rm(JanuaryKeywords)
 
-load("FebruarySelectedKeywords.RData")
-February2023 <- selectedkeywords
-rm(selectedkeywords)
+load("FebruaryKeywords.RData")
+February2023 <- FebruaryKeywords
+rm(FebruaryKeywords)
 
-load("MarchSelectedKeywords.RData")
-March2023 <- selectedkeywords
-rm(selectedkeywords)
+load("MarchKeywords.RData")
+March2023 <- MarchKeywords
+rm(MarchKeywords)
 
-load("AprilSelectedKeywords.RData")
-April2023 <- selectedkeywords
-rm(selectedkeywords)
+load("AprilKeywords.RData")
+April2023 <- AprilKeywords
+rm(AprilKeywords)
 
-load("MaySelectedKeywords.RData")
-May2023 <- selectedkeywords
-rm(selectedkeywords)
+load("MayKeywords.RData")
+May2023 <- MayKeywords
+rm(MayKeywords)
 
 df <- list(December2022, January2023, February2023, March2023, April2023, May2023)
 df <- do.call(rbind, df)
