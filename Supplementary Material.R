@@ -66,6 +66,10 @@ source("SelectedKeywordsByMonths.R")
 
 #### FIFTH STEP: Pre-Processing Network Data
 source("PreProcessingNetworkData.R")
-# The result from this fifth step is a bipartite network that 
-# shows how some selected terms (regardless of they are unigrams,
-# bigrams, or ngrams) are selectively tied to specific months.
+# The result from this fifth step is a bipartite network
+# showing how some selected terms (regardless of they
+# are unigrams, bigrams, or ngrams) are selectively 
+# tied to specific months.
+
+
+
