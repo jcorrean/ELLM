@@ -1,19 +1,24 @@
-setwd("/home/jc/Documents/GitHub/ELLM")
-load("DecemberSelectedKeywords.RData")
-December2022 <- selectedkeywords
-rm(selectedkeywords)
+rm(list = ls())
+load("DecemberKeywords.RData")
+December2022 <- DecemberKeywords
+rm(DecemberKeywords)
+
 load("JanuarySelectedKeywords.RData")
-January2023 <- selectedkeywords
-rm(selectedkeywords)
+January2023 <- JanuaryKeywords
+rm(JanuaryKeywords)
+
 load("FebruarySelectedKeywords.RData")
 February2023 <- selectedkeywords
 rm(selectedkeywords)
+
 load("MarchSelectedKeywords.RData")
 March2023 <- selectedkeywords
 rm(selectedkeywords)
+
 load("AprilSelectedKeywords.RData")
 April2023 <- selectedkeywords
 rm(selectedkeywords)
+
 load("MaySelectedKeywords.RData")
 May2023 <- selectedkeywords
 rm(selectedkeywords)
