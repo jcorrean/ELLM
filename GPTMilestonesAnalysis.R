@@ -1,5 +1,4 @@
-setwd("/home/jc/Documents/GitHub/ELLM/")
-load("~/Documents/GitHub/ELLM/StructuredData.RData")
+load("StructuredData.RData")
 
 library(quanteda)
 Textos <- corpus(History$text)
