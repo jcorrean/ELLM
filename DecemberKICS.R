@@ -1,5 +1,5 @@
 # Open the dataset
-load("~/Documents/GitHub/ELLM/StructuredData.RData")
+load("StructuredData.RData")
 # Keyword-in-context search
 library(quanteda)
 summary(Textos)
@@ -93,4 +93,9 @@ selectedkeywords <- do.call(rbind, dataframes_list)
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
 selectedkeywords$Month <- "December 2022"
+DecemberKeywords <- selectedkeywords
+all_objects <- ls()
+rm(list = setdiff(all_objects, "DecemberKeywords"))
+rm(all_objects)
+save.image("DecemberKeywords.RData")
 
