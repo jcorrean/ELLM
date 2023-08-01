@@ -43,7 +43,6 @@ source("PreProcessPDFs.R")
 # 480 rows and 7 variables
 variable.names(History)
 head(History)
-save.image(file = "StructuredData.RData")
 # This data frame is saved with the name
 # StructuredData.RData which is the input for 
 # our next step
@@ -57,7 +56,7 @@ source("GPTMilestonesAnalysis.R")
 # the number of sentences of wikipedia's revisions
 
 #### FOURTH STEP: Keywords-in-context search by month
-source("/home/jc/Documents/GitHub/ELLM/SelectedKeywordsByMonths.R")
+source("SelectedKeywordsByMonths.R")
 # The result from this fourth step is an extended data frame (df)
 # that shows where our selected keywords occurred in each 
 # sampled document. We will take this data frame as input
