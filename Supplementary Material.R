@@ -29,13 +29,13 @@
 # https://github.com/jcorrean/ELLM
 # Let's call our first script
 
-source("/home/jc/Documents/GitHub/ELLM/OpenPDFs.R")
+source("OpenPDFs.R")
 # The result has the following two dataframes:
 # "listado" and "textos". These dataframes are
 # saved as "Results_Step1.RData"
 
 #### SECOND STEP: Pre-process the PDF documents
-source("/home/jc/Documents/GitHub/ELLM/PreProcessPDFs.R")
+source("PreProcessPDFs.R")
 # The result from this second step generates the 
 # following single data frame: History with
 # 480 rows and 7 variables
