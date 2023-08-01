@@ -1,4 +1,4 @@
-load("~/Documents/GitHub/ELLM/Results_Step1.RData")
+load("Results_Step1.RData")
 library(quanteda)
 Textos <- corpus(textos$text)
 docvars(Textos, "Date") <- textos$Date
