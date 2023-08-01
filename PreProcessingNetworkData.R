@@ -3,7 +3,7 @@ load("SelectedKeywords.RData")
 df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
 network <- Network[!duplicated(Network[c(1,2)]),]
-rownames(network) <- 1:243
+rownames(network) <- 1:length(network$pattern)
 
 table(Network$pattern)
 table(Network$Month)
