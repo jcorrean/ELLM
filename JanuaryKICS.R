@@ -1,5 +1,5 @@
 # Open the dataset
-load("~/Documents/GitHub/ELLM/StructuredData.RData")
+load("StructuredData.RData")
 # Keyword-in-context search
 library(quanteda)
 summary(Textos)
@@ -10,7 +10,7 @@ Textos2 <- tokens(Jan,
                   remove_punct = TRUE, 
                   remove_url = TRUE, 
                   remove_symbols = TRUE) %>%  
-  tokens_remove(stopwords("english"))
+   tokens_remove(stopwords("english"))
 
 
 # Our Keyword-in-context search is 
@@ -81,12 +81,21 @@ kc20 <- data.frame(kwic(Textos2, pattern = "yandex"))
 kc21 <- data.frame(kwic(Textos2, pattern = "zapier"))
 kc22 <- data.frame(kwic(Textos2, pattern = phrase("microsoft azure")))
 
+
 dataframes_list <- mget(ls(pattern = "^k"))
 all_objects <- ls()
 
 # Use do.call with rbind to merge all the dataframes
 selectedkeywords <- do.call(rbind, dataframes_list)
 
+
+
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
-selectedkeywords$Month <- "January 2023"
+selectedkeywords$Month <- "January 2022"
+JanuaryKeywords <- selectedkeywords
+all_objects <- ls()
+rm(list = setdiff(all_objects, "JanuaryKeywords"))
+rm(all_objects)
+save.image("JanuaryKeywords.RData")
+
