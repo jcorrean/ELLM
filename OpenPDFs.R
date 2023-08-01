@@ -2,6 +2,7 @@ setwd("/home/jc/Documents/GitHub/ELLM/ELLM-ALRIER/Datas")
 listado <- data.frame(dir())
 library(readtext)
 library(tm)
+library(dplyr)
 DirSource()
 # Get the data directory from readtext
 DATA_DIR <- system.file("extdata/", package = "readtext")
@@ -21,7 +22,7 @@ head(textos, 10)
 # in the name of the following rows, so we edit them manually
 # to make them coincide with their original dates
 textos$Date[1:4] <- "2022-12-06"
-library(dplyr)
+
 textos <- arrange(textos, Date)
 head(textos, 10)
 textos$doc_id <- 1:length(textos$doc_id)
