@@ -1,4 +1,5 @@
-load("/home/jc/Documents/GitHub/ELLM/SelectedKeywords.RData")
+rm(list = ls())
+load("SelectedKeywords.RData")
 df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
 network <- Network[!duplicated(Network[c(1,2)]),]
