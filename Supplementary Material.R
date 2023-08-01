@@ -31,8 +31,9 @@
 
 source("OpenPDFs.R")
 # The result has the following two dataframes:
-# "listado" and "textos". These dataframes are
-# saved as "Results_Step1.RData"
+# "listado" and "textos". We
+# saved as the results as "Results_Step1.RData"
+save.image(file = "Results_Step1.RData")
 
 #### SECOND STEP: Pre-process the PDF documents
 source("PreProcessPDFs.R")
@@ -41,12 +42,13 @@ source("PreProcessPDFs.R")
 # 480 rows and 7 variables
 variable.names(History)
 head(History)
+save.image(file = "StructuredData.RData")
 # This data frame is saved with the name
 # StructuredData.RData which is the input for 
 # our next step
 
 #### THIRD STEP: GPT Milestone Analysis
-source("/home/jc/Documents/GitHub/ELLM/GPTMilestonesAnalysis.R")
+source("GPTMilestonesAnalysis.R")
 # The result from this third step generates the 
 # figure inserted as Figure 2 in our published document.
 # It conveys the message that the documentation
