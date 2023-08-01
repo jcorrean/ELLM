@@ -1,3 +1,4 @@
+rm(list = ls())
 load("Results_Step1.RData")
 library(quanteda)
 Textos <- corpus(textos$text)
@@ -20,5 +21,5 @@ docvars(Textos, "Date") <- versions$Date
 summary(Textos)
 History <- versions
 rm(list = setdiff(ls(), c("History", "Textos")))
-
+save.image(file = "StructuredData.RData")
 
