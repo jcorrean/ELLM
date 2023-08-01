@@ -34,7 +34,7 @@ source("OpenPDFs.R")
 # The result has the following two dataframes:
 # "listado" and "textos". We
 # saved as the results as "Results_Step1.RData"
-save.image(file = "Results_Step1.RData")
+
 
 #### SECOND STEP: Pre-process the PDF documents
 source("PreProcessPDFs.R")
