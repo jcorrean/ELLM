@@ -57,9 +57,9 @@ source("GPTMilestonesAnalysis.R")
 
 #### FOURTH STEP: Keywords-in-context search by month
 source("SelectedKeywordsByMonths.R")
-# The result from this fourth step is an extended data frame (df)
-# that shows where our selected keywords occurred in each 
-# sampled document. We will take this data frame as input
+# The result from this fourth step is an extended data frame 
+# (df) that shows where our selected keywords occurred in
+# each sampled document. We will take this df as input
 # for our next step, This data frame is saved as
 # SelectedKeywords.RData which is used as input in the
 # next step.
