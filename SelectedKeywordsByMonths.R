@@ -27,3 +27,4 @@ df <- list(December2022, January2023, February2023, March2023, April2023, May202
 df <- do.call(rbind, df)
 
 rm(list = setdiff(ls(), "df"))
+save.image("SelectedKeywords.RData")
