@@ -24,10 +24,11 @@
 # support and the authors have no conflict of interests
 # regarding the results of this research. 
 
-#### FIRST STEP: Open and parse collected PDF documents
-# from our official GitHub repo: 
+#### FIRST STEP: 
+# Clone our official GitHub repo: 
 # https://github.com/jcorrean/ELLM
-# Let's call our first script
+# and open its unique Project, by 
+# double clicking on ELLM.RProj
 
 source("OpenPDFs.R")
 # The result has the following two dataframes:
