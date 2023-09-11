@@ -1,21 +1,11 @@
-setwd("/home/jc/Documents/GitHub/ELLM/ELLM-ALRIER/Datas")
-listado <- data.frame(dir("ELLM-ALRIER/Datas"))
 library(readtext)
 library(tm)
 library(dplyr)
-DirSource()
-# Get the data directory from readtext
-DATA_DIR <- system.file("extdata/", package = "readtext")
-#listado$Date <- str_sub(listado$dir.., str_locate(listado$dir.., ", ")[, 2] + 1)
-#listado$Date <- gsub("\\.pdf$", "", listado$Date)
-
-#listado$hour <- str_sub(listado$dir.., start = 1, end = 5)
-#textos$minute <- str_sub(textos$doc_id, start = 3, end = 4)
-textos <- readtext(listado$dir..)
-textos$Date <- substr(listado$dir.., 6, nchar(listado$dir..))
+textos <- readtext("ELLM-ALRIER/Datas/")
+textos$Date <- substr(textos$doc_id, 6, nchar(textos$doc_id))
 textos$Date <- gsub("[^0-9-]", "", textos$Date)
 textos$Date <- as.Date(textos$Date, format = "%d-%m-%Y")
-textos$doc_id <- 1:length(textos$doc_id)
+textos$Doc_id <- 1:length(textos$doc_id)
 textos <- arrange(textos, Date)
 head(textos, 10)
 # By looking at the data, we noticed we had some typos 
@@ -25,6 +15,6 @@ textos$Date[1:4] <- "2022-12-06"
 
 textos <- arrange(textos, Date)
 head(textos, 10)
-textos$doc_id <- 1:length(textos$doc_id)
-setwd("/home/jc/Documents/GitHub/ELLM/")
+textos$Doc_id <- 1:length(textos$doc_id)
+textos <- textos %>% relocate(Doc_id)
 save.image(file = "/home/jc/Documents/GitHub/ELLM/Results_Step1.RData")
