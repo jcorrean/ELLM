@@ -1,13 +1,10 @@
-setwd("/home/jc/Documents/GitHub/ELLM/ELLM-ALRIER/Datas")
-listado <- data.frame(dir())
+listado <- data.frame(dir("ELLM-ALRIER/Datas/"))
 library(readtext)
 library(tm)
 library(dplyr)
-DirSource()
-# Get the data directory from readtext
-DATA_DIR <- system.file("extdata/", package = "readtext")
-#listado$Date <- str_sub(listado$dir.., str_locate(listado$dir.., ", ")[, 2] + 1)
-#listado$Date <- gsub("\\.pdf$", "", listado$Date)
+library(stringr)
+listado$Date <- str_sub(listado$dir.., str_locate(listado$dir.., ", ")[, 2] + 1)
+listado$Date <- gsub("\\.pdf$", "", listado$Date)
 
 #listado$hour <- str_sub(listado$dir.., start = 1, end = 5)
 #textos$minute <- str_sub(textos$doc_id, start = 3, end = 4)
