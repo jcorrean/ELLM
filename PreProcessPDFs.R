@@ -22,4 +22,3 @@ summary(Textos)
 History <- versions
 rm(list = setdiff(ls(), c("History", "Textos")))
 save.image(file = "StructuredData.RData")
-
