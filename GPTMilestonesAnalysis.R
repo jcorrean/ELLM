@@ -7,6 +7,19 @@ summary(Textos)
 docvars(Textos, "Date") <- History$Date
 aja <- data.frame(summary(Textos, n = length(Textos)))
 summary(Textos)
+
+library(quanteda.textstats)
+readability <- textstat_readability(
+   Textos,
+   measure = "SMOG",
+   remove_hyphens = TRUE,
+   min_sentence_length = 1,
+   max_sentence_length = 10000,
+   intermediate = FALSE)
+
+textos$SMOG <- readability$SMOG
+
+
 library(tidyverse)
 library(ggplot2)
 ggplot(data = aja, aes(x = Date, y = Sentences)) +
