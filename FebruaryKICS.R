@@ -92,10 +92,9 @@ selectedkeywords <- do.call(rbind, dataframes_list)
 
 rm(list = setdiff(all_objects, "selectedkeywords"))
 rm(all_objects)
-selectedkeywords$Month <- "February 2022"
+selectedkeywords$Month <- "February 2023"
 FebruaryKeywords <- selectedkeywords
 all_objects <- ls()
 rm(list = setdiff(all_objects, "FebruaryKeywords"))
 rm(all_objects)
 save.image("FebruaryKeywords.RData")
-
