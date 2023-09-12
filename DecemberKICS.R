@@ -98,4 +98,3 @@ all_objects <- ls()
 rm(list = setdiff(all_objects, "DecemberKeywords"))
 rm(all_objects)
 save.image("DecemberKeywords.RData")
-
