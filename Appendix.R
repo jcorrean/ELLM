@@ -40,7 +40,7 @@ source("OpenPDFs.R")
 source("PreProcessPDFs.R")
 # The result from this second step generates the 
 # following single data frame: History with
-# 480 rows and 7 variables
+# 624 rows and 7 variables
 variable.names(History)
 head(History)
 # This data frame is saved with the name
