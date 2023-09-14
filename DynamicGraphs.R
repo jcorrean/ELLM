@@ -56,7 +56,17 @@ plot(bn,vertex.color=colors[V(bn)$type+1],
      vertex.size=10,vertex.label.degree=-pi/2,
      vertex.label.dist=1.2,vertex.label.cex=0.9)     
 
+bn3.pr <- bipartite.projection(bn)
+Programs <- bn3.pr$proj2
 
+plot(Programs, vertex.label.color = "black", 
+     vertex.label.cex = 1.2, 
+     vertex.color = "pink", 
+     vertex.size = 40, 
+     edge.width = 5, 
+     edge.color = "gray30", 
+     layout = layout_components, 
+     main = "")
 
 
 save.image("~/Documents/GitHub/ELLM/ResultsDynamicGraphs.RData")
