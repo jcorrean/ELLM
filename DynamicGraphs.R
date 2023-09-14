@@ -46,3 +46,8 @@ plot(bn,vertex.color=colors[V(bn)$type+1],
      vertex.shape=shapes[V(bn)$type+1],
      vertex.size=10,vertex.label.degree=-pi/2,
      vertex.label.dist=1.2,vertex.label.cex=0.9)     
+
+
+
+
+save.image("~/Documents/GitHub/ELLM/ResultsDynamicGraphs.RData")
