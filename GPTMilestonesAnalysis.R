@@ -17,17 +17,31 @@ readability <- textstat_readability(
    max_sentence_length = 10000,
    intermediate = FALSE)
 
-textos$SMOG <- readability$SMOG
+aja$SMOG <- readability$SMOG
 
 
 library(tidyverse)
 library(ggplot2)
+ggplot(aja, aes(x=Sentences, y=SMOG)) + 
+   geom_point(color="#7113CF") +
+   theme_classic()
+
+ggplot(aja, aes(x=Date, y=SMOG)) +
+   geom_line(color="#7113CF") +
+   geom_point(color="#7113CF") +
+   scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") +
+   theme_bw() +
+   theme(axis.text.x = element_text(size = 12, color = "black"),  
+         axis.text.y = element_text(size = 12, color = "black"))
+
+ggsave("F2.pdf", dpi = "print", width = 22, height = 15, units = "cm")
+
 ggplot(data = aja, aes(x = Date, y = Sentences)) +
-  geom_line() + geom_point() + theme_bw() + 
+  geom_line() + geom_point(color="#7113CF") + theme_bw() + 
   scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") +
   theme(axis.text.x = element_text(size = 12, color = "black"),  
         axis.text.y = element_text(size = 12, color = "black"),  
         axis.title.x = element_text(size = 13, color = "black"), 
         axis.title.y = element_text(size = 13, color = "black")) 
 
-ggsave("Figure2.pdf", dpi = "print", width = 22, height = 15, units = "cm")
+save.image("~/Documents/GitHub/ELLM/ResultsMilestones.RData")
