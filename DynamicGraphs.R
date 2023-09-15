@@ -122,56 +122,63 @@ may <- tokens(May,
    dfm()
 
 Month1 <- as.matrix(december)
+zero_columns <- apply(Month1, 2, function(col) all(col == 0))
+Month1 <- Month1[, !zero_columns]
 Month2 <- as.matrix(january)
+zero_columns <- apply(Month2, 2, function(col) all(col == 0))
+Month2 <- Month2[, !zero_columns]
+
+Month3 <- as.matrix(february)
+zero_columns <- apply(Month3, 2, function(col) all(col == 0))
+Month3 <- Month3[, !zero_columns]
+
+Month4 <- as.matrix(march)
+zero_columns <- apply(Month4, 2, function(col) all(col == 0))
+Month4 <- Month4[, !zero_columns]
+
+Month5 <- as.matrix(april)
+zero_columns <- apply(Month5, 2, function(col) all(col == 0))
+Month5 <- Month5[, !zero_columns]
+
+Month6 <- as.matrix(may)
+zero_columns <- apply(Month6, 2, function(col) all(col == 0))
+Month6 <- Month6[, !zero_columns]
+
 library(igraph)
-bn <- graph.incidence(pave)
-shapes <- c("circle","square")
-colors <- c("blue","red")
-plot(bn,vertex.color=colors[V(bn)$type+1],
-     vertex.shape=shapes[V(bn)$type+1],
-     vertex.size=10,vertex.label.degree=-pi/2,
-     vertex.label.dist=1.2,vertex.label.cex=0.9)     
+bn1 <- graph.incidence(Month1)
+bn2 <- graph.incidence(Month2)
+bn3 <- graph.incidence(Month3)
+bn4 <- graph.incidence(Month4)
+bn5 <- graph.incidence(Month5)
+bn6 <- graph.incidence(Month6)
 
-bn2.pr <- bipartite.projection(bn)
-Programs <- bn2.pr$proj2
+bn1.pr <- bipartite.projection(bn1)
+keywords1 <- bn1.pr$proj2
 
-plot(Programs, vertex.label.color = "black", 
-     vertex.label.cex = 1.2, 
-     vertex.color = "pink", 
-     vertex.size = 40, 
-     edge.width = 5, 
-     edge.color = "gray30", 
-     layout = layout_components, 
-     main = "")
+bn2.pr <- bipartite.projection(bn2)
+keywords2 <- bn2.pr$proj2
 
-January <- corpus_subset(Textos, Date=="2023-01-31")
-Textos3 <- tokens(January, 
-                  remove_numbers = TRUE, 
-                  remove_punct = TRUE, 
-                  remove_url = TRUE, 
-                  remove_symbols = TRUE) %>%  
-   tokens_remove(stopwords("english")) %>% dfm()
+bn3.pr <- bipartite.projection(bn3)
+keywords3 <- bn3.pr$proj2
 
-pave2 <- as.matrix(dfm_lookup(Textos3, dict, valuetype = "glob"))
-library(igraph)
-bn <- graph.incidence(pave2)
-shapes <- c("circle","square")
-colors <- c("blue","red")
-plot(bn,vertex.color=colors[V(bn)$type+1],
-     vertex.shape=shapes[V(bn)$type+1],
-     vertex.size=10,vertex.label.degree=-pi/2,
-     vertex.label.dist=1.2,vertex.label.cex=0.9)     
+bn4.pr <- bipartite.projection(bn4)
+keywords4 <- bn4.pr$proj2
 
-bn3.pr <- bipartite.projection(bn)
-Programs <- bn3.pr$proj2
+bn5.pr <- bipartite.projection(bn5)
+keywords5 <- bn5.pr$proj2
 
-plot(Programs, vertex.label.color = "black", 
-     vertex.label.cex = 1.2, 
-     vertex.color = "pink", 
-     vertex.size = 40, 
-     edge.width = 5, 
-     edge.color = "gray30", 
-     layout = layout_components, 
+bn6.pr <- bipartite.projection(bn6)
+keywords6 <- bn6.pr$proj2
+
+plot(keywords, 
+     vertex.label.color = "black", 
+     vertex.label.cex = 1, 
+     vertex.color = "white", 
+     vertex.size = 5, 
+     vertex.shape = "none",
+     edge.width = 1, 
+     edge.color = "lightgray", 
+     layout = layout_in_circle, 
      main = "")
 
 
