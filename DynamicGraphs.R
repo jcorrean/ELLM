@@ -122,27 +122,11 @@ may <- tokens(May,
    dfm()
 
 Month1 <- as.matrix(december)
-zero_columns <- apply(Month1, 2, function(col) all(col == 0))
-Month1 <- Month1[, !zero_columns]
 Month2 <- as.matrix(january)
-zero_columns <- apply(Month2, 2, function(col) all(col == 0))
-Month2 <- Month2[, !zero_columns]
-
 Month3 <- as.matrix(february)
-zero_columns <- apply(Month3, 2, function(col) all(col == 0))
-Month3 <- Month3[, !zero_columns]
-
 Month4 <- as.matrix(march)
-zero_columns <- apply(Month4, 2, function(col) all(col == 0))
-Month4 <- Month4[, !zero_columns]
-
 Month5 <- as.matrix(april)
-zero_columns <- apply(Month5, 2, function(col) all(col == 0))
-Month5 <- Month5[, !zero_columns]
-
 Month6 <- as.matrix(may)
-zero_columns <- apply(Month6, 2, function(col) all(col == 0))
-Month6 <- Month6[, !zero_columns]
 
 library(igraph)
 bn1 <- graph.incidence(Month1)
@@ -154,7 +138,7 @@ bn6 <- graph.incidence(Month6)
 
 bn1.pr <- bipartite.projection(bn1)
 keywords1 <- bn1.pr$proj2
-
+ 
 bn2.pr <- bipartite.projection(bn2)
 keywords2 <- bn2.pr$proj2
 
@@ -170,7 +154,7 @@ keywords5 <- bn5.pr$proj2
 bn6.pr <- bipartite.projection(bn6)
 keywords6 <- bn6.pr$proj2
 
-plot(keywords, 
+plot(keywords1, 
      vertex.label.color = "black", 
      vertex.label.cex = 1, 
      vertex.color = "white", 
