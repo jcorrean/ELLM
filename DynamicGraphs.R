@@ -154,7 +154,7 @@ keywords5 <- bn5.pr$proj2
 bn6.pr <- bipartite.projection(bn6)
 keywords6 <- bn6.pr$proj2
 
-plot(keywords1, 
+plot(keywords2, 
      vertex.label.color = "black", 
      vertex.label.cex = 1, 
      vertex.color = "white", 
