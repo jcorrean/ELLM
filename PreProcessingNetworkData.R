@@ -16,7 +16,7 @@ library(dplyr)
 terms <- network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
-  filter(unique_months < 6) 
+  filter(unique_months == 6) 
 
 # Find terms appearing only once
 terms1 <- network %>%
