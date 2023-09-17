@@ -1,0 +1,23 @@
+library(igraph)
+Dec <- DecemberKeywords[c(1,7)]
+bn2 <- graph.data.frame(Dec,directed=FALSE)
+bipartite.mapping(bn2)
+V(bn2)$type <- bipartite_mapping(bn2)$type
+V(bn2)$color <- ifelse(V(bn2)$type, "green", "red")
+V(bn2)$shape <- ifelse(V(bn2)$type, "square", "circle")
+V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.5, 1)
+V(bn2)$size <- sqrt(igraph::degree(bn2))
+E(bn2)$color <- "lightgrey"
+
+bn2.pr <- bipartite.projection(bn2)
+Terms <- bn2.pr$proj2
+matTerms <- as.matrix(get.adjacency(Terms))
+
+# Plot the network with node colors based on centrality
+plot(Programs, vertex.label.color = "black", 
+     vertex.label.cex = 1.5, 
+     vertex.color = "white", 
+     vertex.size = 6, 
+     edge.width = 3.5, 
+     edge.color = "gray30", 
+     layout = layout_components, main = "")
