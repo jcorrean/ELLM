@@ -1,4 +1,4 @@
-load("StructuredData.RData")
+load("ResultsMilestones.RData")
 # Keyword-in-context search
 library(quanteda)
 summary(Textos)
@@ -37,7 +37,7 @@ Terms <- bn2.pr$proj2
 matTerms <- as.matrix(get.adjacency(Terms))
 
 # Plot the network with node colors based on centrality
-plot(Programs, vertex.label.color = "black", 
+plot(Terms, vertex.label.color = "black", 
      vertex.label.cex = 1.5, 
      vertex.color = "white", 
      vertex.size = 6, 
