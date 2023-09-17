@@ -54,7 +54,8 @@ source("GPTMilestonesAnalysis.R")
 # It conveys the message that the documentation
 # of Chat GPT increased its length as captured by
 # the number of sentences of wikipedia's revisions
-# and its readability.
+# and its readability. The results are saved in
+# ResultsMilestones.RData
 
 #### FOURTH STEP: Keywords-in-context search by month
 source("SelectedKeywordsByMonths.R")
