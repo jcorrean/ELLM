@@ -14,8 +14,8 @@ Textos2 <- tokens(Dec,
 
 
 # Our Keyword-in-context search is 
-# organized as follows: 1) unigrams, 2) ngrams, and 
-# 3) companies or commercial words.
+# organized as follows: 1) unigrams, 2) bigrams, and 
+# 3) trigrams.
 
 k1 <- data.frame(kwic(Textos2, pattern = "ai"))
 k2 <- data.frame(kwic(Textos2, pattern = "api"))
@@ -37,6 +37,7 @@ k16 <- data.frame(kwic(Textos2, pattern = "jailbreak"))
 k17 <- data.frame(kwic(Textos2, pattern = "risk"))
 k18 <- data.frame(kwic(Textos2, pattern = "jobs"))
 k19 <- data.frame(kwic(Textos2, pattern = "cybersecurity"))
+k20 <- data.frame(kwic(Textos2, pattern = "prompt"))
 
 kn1 <- data.frame(kwic(Textos2, pattern = phrase("algorithmic bias")))
 kn2 <- data.frame(kwic(Textos2, pattern = phrase("application programming interface")))
@@ -98,3 +99,4 @@ all_objects <- ls()
 rm(list = setdiff(all_objects, "DecemberKeywords"))
 rm(all_objects)
 save.image("DecemberKeywords.RData")
+
