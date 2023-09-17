@@ -1,3 +1,26 @@
+load("StructuredData.RData")
+# Keyword-in-context search
+library(quanteda)
+summary(Textos)
+
+Dec5 <- corpus_subset(Textos, Date == "2022-12-05")
+Dec6 <- corpus_subset(Textos, Date == "2022-12-06")
+Textos1 <- tokens(Dec5, 
+                  remove_numbers = TRUE, 
+                  remove_punct = TRUE, 
+                  remove_url = TRUE, 
+                  remove_symbols = TRUE) %>%  
+   tokens_remove(stopwords("english"))
+
+Textos2 <- tokens(Dec6, 
+                  remove_numbers = TRUE, 
+                  remove_punct = TRUE, 
+                  remove_url = TRUE, 
+                  remove_symbols = TRUE) %>%  
+   tokens_remove(stopwords("english"))
+
+Textos <- Textos1 + Textos2 
+
 library(igraph)
 Dec <- DecemberKeywords[c(1,7)]
 bn2 <- graph.data.frame(Dec,directed=FALSE)
