@@ -12,14 +12,6 @@ dec5 <- tokens(Dec5,
                   remove_symbols = TRUE) %>%  
   tokens_remove(stopwords("english"))
 
-Dec6 <- corpus_subset(Textos, Date == "2022-12-06")
-dec6 <- tokens(Dec6, 
-               remove_numbers = TRUE, 
-               remove_punct = TRUE, 
-               remove_url = TRUE, 
-               remove_symbols = TRUE) %>%  
-   tokens_remove(stopwords("english"))
-
 
 
 # Our Keyword-in-context search is 
@@ -104,33 +96,33 @@ rm(all_objects)
 
 library(igraph)
 Dec <- dec5[c(1,7)]
-bn2 <- graph.data.frame(Dec,directed=FALSE)
-bipartite.mapping(bn2)
-V(bn2)$type <- bipartite_mapping(bn2)$type
-V(bn2)$color <- ifelse(V(bn2)$type, "green", "red")
-V(bn2)$shape <- ifelse(V(bn2)$type, "square", "circle")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.5, 1)
-V(bn2)$size <- sqrt(igraph::degree(bn2))
-E(bn2)$color <- "lightgrey"
+bn1 <- graph.data.frame(Dec,directed=FALSE)
+#bipartite.mapping(bn1)
+V(bn1)$type <- bipartite_mapping(bn1)$type
+V(bn1)$color <- ifelse(V(bn1)$type, "green", "red")
+V(bn1)$shape <- ifelse(V(bn1)$type, "square", "circle")
+V(bn1)$label.cex <- ifelse(V(bn1)$type, 0.5, 1)
+V(bn1)$size <- sqrt(igraph::degree(bn1))
+E(bn1)$color <- "lightgrey"
 
-bn2.pr <- bipartite.projection(bn2)
-Terms <- bn2.pr$proj2
-matTerms <- as.matrix(get.adjacency(Terms))
+bn1.pr <- bipartite.projection(bn1)
+Terms1 <- bn1.pr$proj2
+save.image("December5.RData")
+#matTerms <- as.matrix(get.adjacency(Terms))
 
 # Plot the network with node colors based on centrality
-plot(Terms, vertex.label.color = "black", 
-     vertex.label.cex = 1.5, 
-     vertex.color = "white", 
-     vertex.size = 6, 
-     vertex.shape = "none",
-     edge.width = 1, 
-     edge.color = "gray30", 
-     layout = layout_components, main = "")
+#plot(Terms, vertex.label.color = "black", 
+#     vertex.label.cex = 1.5, 
+#     vertex.color = "white", 
+#     vertex.size = 6, 
+#     vertex.shape = "none",
+#     edge.width = 1, 
+#     edge.color = "gray30", 
+#     layout = layout_components, main = "")
 
-summary(Terms)
+#summary(Terms)
 #DecemberKeywords <- selectedkeywords
 #all_objects <- ls()
 #rm(list = setdiff(all_objects, "DecemberKeywords"))
 #rm(all_objects)
 #save.image("DecemberKeywords.RData")
-
