@@ -1,5 +1,5 @@
 library(alluvial)
-source("/home/jc/Documents/GitHub/ELLM/PreProcessingNetworkData.R")
+source("PreProcessingNetworkData.R")
 library(dplyr)
 WF <- Network %>%
   group_by(pattern, Month) %>%
