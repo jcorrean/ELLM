@@ -127,6 +127,7 @@ plot(Terms, vertex.label.color = "black",
      edge.color = "gray30", 
      layout = layout_components, main = "")
 
+summary(Terms)
 #DecemberKeywords <- selectedkeywords
 #all_objects <- ls()
 #rm(list = setdiff(all_objects, "DecemberKeywords"))
