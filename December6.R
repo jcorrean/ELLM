@@ -111,14 +111,14 @@ save.image("December6.RData")
 #matTerms <- as.matrix(get.adjacency(Terms))
 #
 # Plot the network with node colors based on centrality
-#plot(Terms, vertex.label.color = "black", 
-#     vertex.label.cex = 1.5, 
-#     vertex.color = "white", 
-#     vertex.size = 6, 
-#     vertex.shape = "none",
-#     edge.width = 1, 
-#     edge.color = "gray30", 
-#     layout = layout_components, main = "")
+plot(Terms2, vertex.label.color = "black", 
+     vertex.label.cex = 1.5, 
+     vertex.color = "white", 
+     vertex.size = 6, 
+     vertex.shape = "none",
+     edge.width = 1, 
+     edge.color = "gray30", 
+     layout = layout_components, main = "")
 
 #summary(Terms)
 #graph.density(Terms)
