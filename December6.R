@@ -90,36 +90,40 @@ dataframes_list <- mget(ls(pattern = "^k"))
 all_objects <- ls()
 
 # Use do.call with rbind to merge all the dataframes
-dec6 <- do.call(rbind, dataframes_list)
-rm(list = setdiff(all_objects, "dec6"))
+dec5 <- do.call(rbind, dataframes_list)
+rm(list = setdiff(all_objects, "dec5"))
 rm(all_objects)
 
 library(igraph)
-Dec <- dec6[c(1,7)]
-bn2 <- graph.data.frame(Dec,directed=FALSE)
-#bipartite.mapping(bn2)
-V(bn2)$type <- bipartite_mapping(bn2)$type
-V(bn2)$color <- ifelse(V(bn2)$type, "green", "red")
-V(bn2)$shape <- ifelse(V(bn2)$type, "square", "circle")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 0.5, 1)
-V(bn2)$size <- sqrt(igraph::degree(bn2))
-E(bn2)$color <- "lightgrey"
-#
-bn2.pr <- bipartite.projection(bn2)
-Terms2 <- bn2.pr$proj2
+Dec <- dec5[c(1,7)]
+bn1 <- graph.data.frame(Dec,directed=FALSE)
+#bipartite.mapping(bn1)
+V(bn1)$type <- bipartite_mapping(bn1)$type
+V(bn1)$color <- ifelse(V(bn1)$type, "green", "red")
+V(bn1)$shape <- ifelse(V(bn1)$type, "square", "circle")
+V(bn1)$label.cex <- ifelse(V(bn1)$type, 0.5, 1)
+V(bn1)$size <- sqrt(igraph::degree(bn1))
+E(bn1)$color <- "lightgrey"
+
+bn1.pr <- bipartite.projection(bn1)
+Terms2 <- bn1.pr$proj2
+rm(list = setdiff(ls(), "Terms2"))
 save.image("December6.RData")
 #matTerms <- as.matrix(get.adjacency(Terms))
-#
+
 # Plot the network with node colors based on centrality
-plot(Terms2, vertex.label.color = "black", 
-     vertex.label.cex = 1.5, 
-     vertex.color = "white", 
-     vertex.size = 6, 
-     vertex.shape = "none",
-     edge.width = 1, 
-     edge.color = "gray30", 
-     layout = layout_components, main = "")
+#plot(Terms1, vertex.label.color = "black", 
+#     vertex.label.cex = 1.5, 
+#     vertex.color = "white", 
+#     vertex.size = 6, 
+#     vertex.shape = "none",
+#     edge.width = 1, 
+#     edge.color = "gray30", 
+#     layout = layout_components, main = "")
 
 #summary(Terms)
-#graph.density(Terms)
-#V(Terms)$name
+#DecemberKeywords <- selectedkeywords
+#all_objects <- ls()
+#rm(list = setdiff(all_objects, "DecemberKeywords"))
+#rm(all_objects)
+#save.image("DecemberKeywords.RData")
