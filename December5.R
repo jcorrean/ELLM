@@ -107,18 +107,19 @@ E(bn1)$color <- "lightgrey"
 
 bn1.pr <- bipartite.projection(bn1)
 Terms1 <- bn1.pr$proj2
+rm(list = setdiff(ls(), "Terms1"))
 save.image("December5.RData")
 #matTerms <- as.matrix(get.adjacency(Terms))
 
 # Plot the network with node colors based on centrality
-plot(Terms1, vertex.label.color = "black", 
-     vertex.label.cex = 1.5, 
-     vertex.color = "white", 
-     vertex.size = 6, 
-     vertex.shape = "none",
-     edge.width = 1, 
-     edge.color = "gray30", 
-     layout = layout_components, main = "")
+#plot(Terms1, vertex.label.color = "black", 
+#     vertex.label.cex = 1.5, 
+#     vertex.color = "white", 
+#     vertex.size = 6, 
+#     vertex.shape = "none",
+#     edge.width = 1, 
+#     edge.color = "gray30", 
+#     layout = layout_components, main = "")
 
 #summary(Terms)
 #DecemberKeywords <- selectedkeywords
