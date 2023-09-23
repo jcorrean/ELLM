@@ -133,3 +133,4 @@ plot(Terms2, vertex.label.color = "black",
 #summary(Terms)
 #graph.density(Terms)
 #V(Terms)$name
+
