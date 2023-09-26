@@ -54,7 +54,9 @@ terms6 <- network %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 6) 
 
- 
+# This selection is biased. I need to plot the entire network
+# estimate the centrality of all nodes, and then ranked from 
+# most central to least central
 network2 <- filter(network, grepl('facebook|apple|cloud computing|human intelligence|jobs|architecture|bing chat|nvidia|opentable|shopify|wolfram|zapier|expedia|hugging face|application programming interface|platform|natural language|algorithm|meta|naver|reddit|snapchat|yandex|baidu|large language model|jailbreak|ai|openai', pattern))
 
 library(igraph)
