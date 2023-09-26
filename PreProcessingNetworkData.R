@@ -8,51 +8,41 @@ table(Network$pattern)
 table(Network$Month)
 
 library(dplyr)
-# Find terms that did not appear in all six months
-terms <- network %>%
-  group_by(pattern) %>%
-  summarise(unique_months = n_distinct(Month)) %>%
-  filter(unique_months == 6) 
-
 # Find terms appearing only once
-terms1 <- network %>%
+terms1 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 1) 
 
 # Find terms appearing only twice
-terms2 <- network %>%
+terms2 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 2) 
 
 # Find terms appearing three times
-terms3 <- network %>%
+terms3 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 3) 
 
 # Find terms appearing four times
-terms4 <- network %>%
+terms4 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 4) 
 
 # Find terms appearing five times
-terms5 <- network %>%
+terms5 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 5) 
 
 # Find terms appearing six times
-terms6 <- network %>%
+terms6 <- Network %>%
   group_by(pattern) %>%
   summarise(unique_months = n_distinct(Month)) %>%
   filter(unique_months == 6) 
-
-# This selection is biased. I need to plot the entire network
-# estimate the centrality of all nodes, and then ranked from 
-# most central to least central
 
 library(igraph)
 bn2 <- graph.data.frame(Network, directed = FALSE)
