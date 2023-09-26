@@ -59,7 +59,7 @@ terms6 <- network %>%
 # most central to least central
 
 library(igraph)
-bn2 <- graph.data.frame(network, directed = FALSE)
+bn2 <- graph.data.frame(Network, directed = FALSE)
 bipartite.mapping(bn2)
 V(bn2)$type <- bipartite_mapping(bn2)$type
 Centralities <- data.frame(degree = igraph::degree(bn2),
@@ -67,6 +67,7 @@ Centralities <- data.frame(degree = igraph::degree(bn2),
                           betweenness = igraph::betweenness(bn2),
                           Eigen.vector = igraph::eigen_centrality(bn2))
 Centralities <- Centralities[1:4]
+Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
 # Set the color and shape of the vertices based on the 'type'
 V(bn2)$color <- ifelse(V(bn2)$type, "lightblue1", "#5464C8")
 V(bn2)$shape <- ifelse(V(bn2)$type, "none", "none")
