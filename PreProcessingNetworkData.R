@@ -6,8 +6,6 @@ rownames(network) <- 1:length(network$pattern)
 
 table(Network$pattern)
 table(Network$Month)
-table(network$pattern)
-table(network$Month)
 
 library(dplyr)
 # Find terms that did not appear in all six months
