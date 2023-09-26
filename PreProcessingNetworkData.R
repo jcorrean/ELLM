@@ -57,13 +57,16 @@ terms6 <- network %>%
 # This selection is biased. I need to plot the entire network
 # estimate the centrality of all nodes, and then ranked from 
 # most central to least central
-network2 <- filter(network, grepl('facebook|apple|cloud computing|human intelligence|jobs|architecture|bing chat|nvidia|opentable|shopify|wolfram|zapier|expedia|hugging face|application programming interface|platform|natural language|algorithm|meta|naver|reddit|snapchat|yandex|baidu|large language model|jailbreak|ai|openai', pattern))
 
 library(igraph)
-bn2 <- graph.data.frame(network2, directed = FALSE)
+bn2 <- graph.data.frame(network, directed = FALSE)
 bipartite.mapping(bn2)
 V(bn2)$type <- bipartite_mapping(bn2)$type
-Betweenness <- data.frame(igraph::betweenness(bn2))
+Centralities <- data.frame(degree = igraph::degree(bn2),
+                          closeness =igraph::closeness(bn2),
+                          betweenness = igraph::betweenness(bn2),
+                          Eigen.vector = igraph::eigen_centrality(bn2))
+Centralities <- Centralities[1:4]
 # Set the color and shape of the vertices based on the 'type'
 V(bn2)$color <- ifelse(V(bn2)$type, "lightblue1", "#5464C8")
 V(bn2)$shape <- ifelse(V(bn2)$type, "none", "none")
