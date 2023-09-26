@@ -1,3 +1,5 @@
+# This part of the script shows most important 
+# keywords, selected by their centrality
 library(alluvial)
 source("PreProcessingNetworkData.R")
 library(dplyr)
@@ -20,7 +22,7 @@ unique(WF$pattern)
 
 library(alluvial)
 set.seed(4421266) # for nice colours
-num_colors <- 53
+num_colors <- 58
 cols <- hsv(h = runif(num_colors), s = runif(num_colors, 0.1, 1), v = runif(num_colors, 0.1, 1))
 alluvial_ts(WF, wave = .3, ygap = 5, col = cols, plotdir = 'centred', alpha=.9,
             grid = TRUE, grid.lwd = 5, xmargin = 0.2, lab.cex = .7, xlab = '',
