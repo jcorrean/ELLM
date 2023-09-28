@@ -13,7 +13,7 @@ CentralitiesMAR <- CentralitiesMAR[!grepl("text", CentralitiesMAR$Nodes),]
 CentralitiesMAR$Month <- "March 2023" 
 library(dplyr)
 CentralitiesMAR <- CentralitiesMAR %>% relocate(Nodes)
-
+CentralitiesMAR <- head(CentralitiesMAR, 10)
 save.image("CentralitiesMAR.RData")
 
 #https://github.com/davidsjoberg/ggbump

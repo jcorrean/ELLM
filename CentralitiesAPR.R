@@ -13,7 +13,7 @@ CentralitiesAPR <- CentralitiesAPR[!grepl("text", CentralitiesAPR$Nodes),]
 CentralitiesAPR$Month <- "April 2023" 
 library(dplyr)
 CentralitiesAPR <- CentralitiesAPR %>% relocate(Nodes)
-
+CentralitiesAPR <- head(CentralitiesAPR, 10)
 save.image("CentralitiesAPR.RData")
 
 #https://github.com/davidsjoberg/ggbump

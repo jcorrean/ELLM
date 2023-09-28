@@ -1,38 +1,33 @@
 rm(list = ls())
-load("SelectedKeywords.RData")
-df$keyword <- tolower(df$keyword)
-Network <- df[,c(7,8)]
-rownames(Network) <- 1:length(Network$pattern)
-library(igraph)
-bn2 <- graph.data.frame(Network, directed = FALSE)
-bipartite.mapping(bn2)
-V(bn2)$type <- bipartite_mapping(bn2)$type
-Centralities <- data.frame(degree = igraph::degree(bn2),
-                           closeness =igraph::closeness(bn2),
-                           betweenness = igraph::betweenness(bn2),
-                           Eigen.vector = igraph::eigen_centrality(bn2))
-Centralities <- Centralities[1:4]
-Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
-colnames(Centralities)[4] <- "eigenvector"
-Centralities$Nodes <- rownames(Centralities)
-#https://github.com/davidsjoberg/ggbump
-# To plot the ggbump, I need to create 
-# an adhoc table with months in one column
-# and the corresponding Eigenvector 
+load("CentralitiesDEC.RData")
+load("CentralitiesJAN.RData")
+load("CentralitiesFEB.RData")
+load("CentralitiesMAR.RData")
+load("CentralitiesAPR.RData")
+load("CentralitiesMAY.RData")
+rm(bn1)
+Centralities <- list(CentralitiesDEC, 
+                     CentralitiesJAN,
+                     CentralitiesFEB,
+                     CentralitiesMAR,
+                     CentralitiesAPR,
+                     CentralitiesMAY)
+Centralities <- do.call(rbind.data.frame, Centralities)
+rm(list=setdiff(ls(), "Centralities"))
+rownames(Centralities) <- 1:60
+Centralities$Month <- rep(1:6, each = 10)
+Centralities$Rank <- 1:10
+Centralities <- Centralities[order(Centralities$Nodes), ]
+Centralities <- Centralities[c(1,6,7)]
 
-ggplot(df, aes(year, rank, color = country)) +
-   geom_point(size = 7) +
-   geom_text(data = df %>% filter(year == min(year)),
-             aes(x = year - .1, label = country), size = 5, hjust = 1) +
-   geom_text(data = df %>% filter(year == max(year)),
-             aes(x = year + .1, label = country), size = 5, hjust = 0) +
-   geom_bump(size = 2, smooth = 8) +
-   scale_x_continuous(limits = c(2010.6, 2013.4),
-                      breaks = seq(2011, 2013, 1)) +
-   theme_minimal_grid(font_size = 14, line_size = 0) +
-   theme(legend.position = "none",
-         panel.grid.major = element_blank()) +
-   labs(y = "RANK",
-        x = NULL) +
-   scale_y_reverse() +
-   scale_color_manual(values = wes_palette(n = 4, name = "GrandBudapest1"))
+library(ggplot2)
+library(ggbump)
+library(ggrepel)
+ggplot(Centralities, aes(Month, Rank, color = Nodes)) +
+   geom_bump(size = 2) +
+   geom_text_repel(aes(label = Nodes), nudge_y = 0.2, size = 4) +  # Add non-overlapping labels
+   theme_bw() +
+   scale_x_continuous(breaks = unique(Centralities$Month)) +
+   scale_y_reverse(breaks = 1:10, labels = 1:10) +  # Reverse the Y-axis and set breaks/labels from 1 to 10
+   labs(x = "Months", y = "Rank") +
+   theme(legend.position = "none")

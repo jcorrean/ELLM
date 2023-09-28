@@ -13,7 +13,7 @@ CentralitiesJAN <- CentralitiesJAN[!grepl("text", CentralitiesJAN$Nodes),]
 CentralitiesJAN$Month <- "January 2023" 
 library(dplyr)
 CentralitiesJAN <- CentralitiesJAN %>% relocate(Nodes)
-
+CentralitiesJAN <- head(CentralitiesJAN, 10)
 save.image("CentralitiesJAN.RData")
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
