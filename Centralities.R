@@ -16,7 +16,9 @@ Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
 colnames(Centralities)[4] <- "eigenvector"
 Centralities$Nodes <- rownames(Centralities)
 #https://github.com/davidsjoberg/ggbump
-
+# To plot the ggbump, I need to create 
+# an adhoc table with months in one column
+# and the corresponding Eigenvector 
 
 ggplot(df, aes(year, rank, color = country)) +
    geom_point(size = 7) +
