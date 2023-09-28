@@ -10,7 +10,11 @@ CentralitiesJAN <- CentralitiesJAN[order(-CentralitiesJAN$Eigen.vector.vector), 
 colnames(CentralitiesJAN)[4] <- "eigenvector"
 CentralitiesJAN$Nodes <- rownames(CentralitiesJAN)
 CentralitiesJAN <- CentralitiesJAN[!grepl("text", CentralitiesJAN$Nodes),]
+CentralitiesJAN$Month <- "January 2022" 
+library(dplyr)
+CentralitiesJAN <- CentralitiesJAN %>% relocate(Nodes)
 
+save.image("CentralitiesJAN.RData")
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
 # an adhoc table with months in one column
