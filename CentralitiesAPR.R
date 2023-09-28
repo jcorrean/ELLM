@@ -10,6 +10,11 @@ CentralitiesAPR <- CentralitiesAPR[order(-CentralitiesAPR$Eigen.vector.vector), 
 colnames(CentralitiesAPR)[4] <- "eigenvector"
 CentralitiesAPR$Nodes <- rownames(CentralitiesAPR)
 CentralitiesAPR <- CentralitiesAPR[!grepl("text", CentralitiesAPR$Nodes),]
+CentralitiesAPR$Month <- "April 2023" 
+library(dplyr)
+CentralitiesAPR <- CentralitiesAPR %>% relocate(Nodes)
+
+save.image("CentralitiesAPR.RData")
 
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
