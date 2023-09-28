@@ -10,7 +10,11 @@ CentralitiesMAY <- CentralitiesMAY[order(-CentralitiesMAY$Eigen.vector.vector), 
 colnames(CentralitiesMAY)[4] <- "eigenvector"
 CentralitiesMAY$Nodes <- rownames(CentralitiesMAY)
 CentralitiesMAY <- CentralitiesMAY[!grepl("text", CentralitiesMAY$Nodes),]
+CentralitiesMAY$Month <- "May 2023" 
+library(dplyr)
+CentralitiesMAY <- CentralitiesMAY %>% relocate(Nodes)
 
+save.image("CentralitiesMAY.RData")
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
 # an adhoc table with months in one column
