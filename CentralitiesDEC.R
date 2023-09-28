@@ -10,6 +10,11 @@ CentralitiesDEC <- CentralitiesDEC[order(-CentralitiesDEC$Eigen.vector.vector), 
 colnames(CentralitiesDEC)[4] <- "eigenvector"
 CentralitiesDEC$Nodes <- rownames(CentralitiesDEC)
 CentralitiesDEC <- CentralitiesDEC[!grepl("text", CentralitiesDEC$Nodes),]
+CentralitiesDEC$Month <- "December 2022" 
+library(dplyr)
+CentralitiesDEC <- CentralitiesDEC %>% relocate(Nodes)
+
+save.image("CentralitiesDEC.RData")
 
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
