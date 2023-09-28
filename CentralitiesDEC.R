@@ -9,6 +9,8 @@ CentralitiesDEC <- CentralitiesDEC[1:4]
 CentralitiesDEC <- CentralitiesDEC[order(-CentralitiesDEC$Eigen.vector.vector), ]
 colnames(CentralitiesDEC)[4] <- "eigenvector"
 CentralitiesDEC$Nodes <- rownames(CentralitiesDEC)
+CentralitiesDEC <- CentralitiesDEC[!grepl("text", CentralitiesDEC$Nodes),]
+
 #https://github.com/davidsjoberg/ggbump
 # To plot the ggbump, I need to create 
 # an adhoc table with months in one column
