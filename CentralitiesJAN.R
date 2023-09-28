@@ -10,7 +10,7 @@ CentralitiesJAN <- CentralitiesJAN[order(-CentralitiesJAN$Eigen.vector.vector), 
 colnames(CentralitiesJAN)[4] <- "eigenvector"
 CentralitiesJAN$Nodes <- rownames(CentralitiesJAN)
 CentralitiesJAN <- CentralitiesJAN[!grepl("text", CentralitiesJAN$Nodes),]
-CentralitiesJAN$Month <- "January 2022" 
+CentralitiesJAN$Month <- "January 2023" 
 library(dplyr)
 CentralitiesJAN <- CentralitiesJAN %>% relocate(Nodes)
 
