@@ -56,6 +56,12 @@ Centralities <- Centralities[1:4]
 Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
 colnames(Centralities)[4] <- "eigenvector"
 Centralities$Nodes <- rownames(Centralities)
+
+
+
+
+
+
 # Set the color and shape of the vertices based on the 'type'
 V(bn2)$color <- ifelse(V(bn2)$type, "lightblue1", "#5464C8")
 V(bn2)$shape <- ifelse(V(bn2)$type, "none", "none")
