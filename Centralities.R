@@ -31,5 +31,7 @@ ggplot(Centralities, aes(Month, Rank, color = Nodes)) +
    theme_cowplot() +
    scale_x_continuous(breaks = 1:6, labels = custom_labels) +  # Use custom labels
    scale_y_reverse(breaks = 1:10, labels = 1:10) +  # Reverse the Y-axis and set breaks/labels from 1 to 10
-   labs(x = "First six months of Wikipedia edits for ChatGPT", y = "Rank") +
+   labs(x = "Months", y = "Rank") +
    theme(legend.position = "none")
+
+ggsave("F3.pdf", dpi = "print", width = 28, height = 20, units = "cm")
