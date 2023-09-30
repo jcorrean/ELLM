@@ -49,7 +49,10 @@ p1 = ggplot_calendar_heatmap(
    aja,
    'Date',
    'Sentences'
-) + theme(legend.position=c(0.87,0.75), legend.background=element_blank())
+) + theme(
+   legend.position=c(0.75,0.75), 
+   legend.background=element_blank(),
+   legend.direction = "horizontal")
 
 p1 +
    xlab("Time") +
@@ -57,7 +60,7 @@ p1 +
    scale_fill_continuous(low = 'blue2', high = 'red', limits = c(0, 1500)) +
    facet_wrap(~Year, ncol = 1)
 
-ggsave("F3.pdf", dpi = "print", width = 22, height = 15, units = "cm")
+ggsave("F3.pdf", dpi = "print", width = 24, height = 20, units = "cm")
 
 ggplot_waterfall(aja, cXColumnName = 'Date', cYColumnName = 'Tokens', nArrowSize = -0.2) + 
    scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") + 
