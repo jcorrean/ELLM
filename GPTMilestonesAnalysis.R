@@ -55,10 +55,10 @@ p1 = ggplot_calendar_heatmap(
 p1 +
    xlab("Time") +
    ylab("Daily Wikipedia edits") +
-   scale_fill_continuous(low = 'blue2', high = 'red', limits = c(20, 1500)) +
+   scale_fill_continuous(low = 'blue2', high = 'red', limits = c(0, 1500)) +
    facet_wrap(~Year, ncol = 1)
 
-
+ggsave("F3.pdf", dpi = "print", width = 22, height = 15, units = "cm")
 
 ggplot_waterfall(aja, cXColumnName = 'Date', cYColumnName = 'Tokens', nArrowSize = -0.2) + 
    scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") + 
