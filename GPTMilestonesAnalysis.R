@@ -46,19 +46,22 @@ ggplot(data = aja, aes(x = Date, y = Sentences)) +
 
 library(ggTimeSeries)
 p1 = ggplot_calendar_heatmap(
-   dtData,
-   'DateCol',
-   'ValueCol'
-)
+   aja,
+   'Date',
+   'Sentences'
+) + theme(legend.position=c(0.87,0.75), legend.background=element_blank())
 
 # adding some formatting
 p1 +
-   xlab(NULL) +
-   ylab(NULL) +
-   scale_fill_continuous(low = 'green', high = 'red') +
+   xlab("Time") +
+   ylab("Daily Wikipedia edits") +
+   scale_fill_continuous(low = 'blue2', high = 'red', limits = c(20, 1500)) +
    facet_wrap(~Year, ncol = 1)
 
 
 
+ggplot_waterfall(aja, cXColumnName = 'Date', cYColumnName = 'Tokens', nArrowSize = -0.2) + 
+   scale_x_date(date_labels = "%Y-%m", date_breaks = "1 month") + 
+   theme_minimal()
 
 save.image("~/Documents/GitHub/ELLM/ResultsMilestones.RData")
