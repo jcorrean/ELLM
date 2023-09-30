@@ -44,4 +44,21 @@ ggplot(data = aja, aes(x = Date, y = Sentences)) +
         axis.title.x = element_text(size = 13, color = "black"), 
         axis.title.y = element_text(size = 13, color = "black")) 
 
+library(ggTimeSeries)
+p1 = ggplot_calendar_heatmap(
+   dtData,
+   'DateCol',
+   'ValueCol'
+)
+
+# adding some formatting
+p1 +
+   xlab(NULL) +
+   ylab(NULL) +
+   scale_fill_continuous(low = 'green', high = 'red') +
+   facet_wrap(~Year, ncol = 1)
+
+
+
+
 save.image("~/Documents/GitHub/ELLM/ResultsMilestones.RData")
