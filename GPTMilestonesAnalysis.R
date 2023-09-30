@@ -51,7 +51,6 @@ p1 = ggplot_calendar_heatmap(
    'Sentences'
 ) + theme(legend.position=c(0.87,0.75), legend.background=element_blank())
 
-# adding some formatting
 p1 +
    xlab("Time") +
    ylab("Daily Wikipedia edits") +
