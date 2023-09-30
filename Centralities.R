@@ -20,9 +20,11 @@ Centralities$Rank <- 1:10
 Centralities <- Centralities[order(Centralities$Nodes), ]
 Centralities <- Centralities[c(1,6,7)]
 
+library(tidyverse)
 library(ggplot2)
 library(ggbump)
 library(ggrepel)
+library(cowplot)
 custom_labels <- c("December 2022", "January 2023", "February 2023", "March 2023", "April 2023", "May 2023")
 # Modify the ggplot code to use custom labels
 ggplot(Centralities, aes(Month, Rank, color = Nodes)) +
@@ -34,4 +36,4 @@ ggplot(Centralities, aes(Month, Rank, color = Nodes)) +
    labs(x = "Months", y = "Rank") +
    theme(legend.position = "none")
 
-ggsave("F3.pdf", dpi = "print", width = 28, height = 20, units = "cm")
+ggsave("F4.pdf", dpi = "print", width = 28, height = 20, units = "cm")
