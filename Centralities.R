@@ -15,6 +15,7 @@ Centralities <- list(CentralitiesDEC,
 Centralities <- do.call(rbind.data.frame, Centralities)
 rm(list=setdiff(ls(), "Centralities"))
 rownames(Centralities) <- 1:60
+centralities <- Centralities
 Centralities$Month <- rep(1:6, each = 10)
 Centralities$Rank <- 1:10
 Centralities <- Centralities[order(Centralities$Nodes), ]
@@ -37,3 +38,5 @@ ggplot(Centralities, aes(Month, Rank, color = Nodes)) +
    theme(legend.position = "none")
 
 ggsave("F4.pdf", dpi = "print", width = 28, height = 20, units = "cm")
+
+save.image("CentralitiesTOP10.RData")
