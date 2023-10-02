@@ -5,6 +5,7 @@ Network <- df[,c(7,8)]
 Network <- Network[!duplicated(Network), ]
 Network <- Network[,c(ncol(Network),1:(ncol(Network)-1))]
 
+
 December <- dplyr::filter(Network, grepl("December 2022",Month))
 January  <- dplyr::filter(Network, grepl("January 2023",Month))
 February  <- dplyr::filter(Network, grepl("February 2023",Month))
@@ -26,6 +27,13 @@ net3 <- graph_from_edgelist(February, directed = FALSE)
 net4 <- graph_from_edgelist(March, directed = FALSE)
 net5 <- graph_from_edgelist(April, directed = FALSE)
 net6 <- graph_from_edgelist(May, directed = FALSE)
+network <- as.matrix(Network)
+
+network <- graph_from_edgelist(network, directed = FALSE)
+
+# Network-based Statistics
+graph.density(network)
+diameter(network)
 
 
 summary(net1)
