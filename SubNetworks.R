@@ -35,46 +35,6 @@ summary(net4)
 summary(net5)
 summary(net6)
 
-library(ggplot2)
-library(ggraph)
-library(dplyr)
-
-# Function to convert an igraph object to a data frame
-igraph_to_data_frame <- function(net) {
-   edges_df <- as.data.frame(get.edgelist(net))
-   names(edges_df) <- c("from", "to")
-   return(edges_df)
-}
-
-# Convert the networks to data frames
-net1_df <- igraph_to_data_frame(net1)
-net2_df <- igraph_to_data_frame(net2)
-net3_df <- igraph_to_data_frame(net3)
-net4_df <- igraph_to_data_frame(net4)
-net5_df <- igraph_to_data_frame(net5)
-net6_df <- igraph_to_data_frame(net6)
-
-# Add a column to identify the network
-net1_df$network <- "December"
-net2_df$network <- "January"
-net3_df$network <- "February"
-net4_df$network <- "March"
-net5_df$network <- "April"
-net6_df$network <- "May"
-
-# Combine all data frames into a single data frame
-all_networks_df <- bind_rows(net1_df, net2_df, net3_df, net4_df, net5_df, net6_df)
-
-# Plot the networks using ggraph and facet_wrap
-ggraph(all_networks_df, aes(x = from, y = to)) +
-   geom_edge_link() +
-   geom_node_point() +
-   facet_grid(~network, scales = "free") +
-   theme_minimal()
-
-
-
-
 
 library(grid)
 par(mfrow = c(2, 3))
