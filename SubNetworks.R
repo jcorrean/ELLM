@@ -35,8 +35,8 @@ summary(net4)
 summary(net5)
 summary(net6)
 
-
-par(mfrow = c(3, 2))
+library(grid)
+par(mfrow = c(2, 3))
 
 plot(net1, 
      displaylabels = TRUE, 
@@ -97,3 +97,4 @@ plot(net6,
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
      layout =   layout_components)
+
