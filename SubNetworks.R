@@ -96,5 +96,5 @@ plot(net6,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
