@@ -38,6 +38,7 @@ summary(net6)
 library(grid)
 par(mfrow = c(2, 3))
 
+set.seed(123)
 plot(net1, 
      displaylabels = TRUE, 
      edge.width=0.5,
@@ -46,7 +47,7 @@ plot(net1,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
 plot(net2, 
      displaylabels = TRUE, 
@@ -56,7 +57,7 @@ plot(net2,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
 plot(net3, 
      displaylabels = TRUE, 
@@ -66,7 +67,7 @@ plot(net3,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
 plot(net4, 
      displaylabels = TRUE, 
@@ -76,7 +77,7 @@ plot(net4,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
 plot(net5, 
      displaylabels = TRUE, 
@@ -86,7 +87,7 @@ plot(net5,
      vertex.color = "white",
      vertex.frame.color = "gray",
      vertex.label.font=0.5, 
-     layout =   layout_components)
+     layout =   layout_with_fr)
 
 plot(net6, 
      displaylabels = TRUE, 
