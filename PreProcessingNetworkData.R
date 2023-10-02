@@ -85,3 +85,4 @@ rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates a
 plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "",
      vertex.label.color = ifelse(V(bn2)$shape == "circle", "red", "black"))
 
+save.image("ResultsPreProcessingNetworkData.RData")
