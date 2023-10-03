@@ -32,17 +32,34 @@ network <- as.matrix(Network)
 network <- graph_from_edgelist(network, directed = FALSE)
 
 # Network-based Statistics
+
 graph.density(network)
 diameter(network)
+summary(network)
 
-
+graph.density(net1)
+diameter(net1)
 summary(net1)
-summary(net2)
-summary(net3)
-summary(net4)
-summary(net5)
-summary(net6)
 
+graph.density(net2)
+diameter(net2)
+summary(net2)
+
+graph.density(net3)
+diameter(net3)
+summary(net3)
+
+graph.density(net4)
+diameter(net4)
+summary(net4)
+
+graph.density(net5)
+diameter(net5)
+summary(net5)
+
+graph.density(net6)
+diameter(net6)
+summary(net6)
 
 library(grid)
 par(mfrow = c(2, 3))
