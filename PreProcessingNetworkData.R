@@ -67,7 +67,13 @@ Centralities <- subset(Centralities,
                             "chat", "data", 
                             "artificial intelligence", 
                             "proximal policy optimization",
-                            "large language models"))
+                            "large language models",
+                            "hallucinat",
+                            "reinforcement learning",
+                            "InstructGPT",
+                            "prompt",
+                            "human trainers",
+                            "risk"))
 
 
 
