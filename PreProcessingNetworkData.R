@@ -56,6 +56,9 @@ Centralities <- Centralities[1:4]
 Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
 colnames(Centralities)[4] <- "eigenvector"
 Centralities$Nodes <- rownames(Centralities)
+# Let's remove the nodes corresponding to the month
+# and keep those of the concepts associated with
+# ChatGPT development. 
 
 
 
