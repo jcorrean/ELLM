@@ -56,11 +56,18 @@ Centralities <- Centralities[1:4]
 Centralities <- Centralities[order(-Centralities$Eigen.vector.vector), ]
 colnames(Centralities)[4] <- "eigenvector"
 Centralities$Nodes <- rownames(Centralities)
-# Let's remove the nodes corresponding to the month
+# Let's remove the nodes corresponding to the months
 # and keep those of the concepts associated with
-# ChatGPT development. 
-
+# ChatGPT development that did not appeared 
+# on Figure 4. 
 Centralities <- subset(Centralities, !Nodes %in% c("December 2022", "January 2023", "February 2023", "March 2023", "April 2023", "May 2023"))
+Centralities <- subset(Centralities, 
+                       !Nodes %in% 
+                          c("ai", "chatbot", 
+                            "chat", "data", 
+                            "artificial intelligence", 
+                            "proximal policy optimization",
+                            "large language models"))
 
 
 
