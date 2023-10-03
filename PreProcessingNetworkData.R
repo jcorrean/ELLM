@@ -60,6 +60,9 @@ Centralities$Nodes <- rownames(Centralities)
 # and keep those of the concepts associated with
 # ChatGPT development. 
 
+Centralities <- subset(Centralities, !Nodes %in% c("December 2022", "January 2023", "February 2023", "March 2023", "April 2023", "May 2023"))
+
+
 
 
 
