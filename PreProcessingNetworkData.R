@@ -88,7 +88,7 @@ ggplot(Centralities, aes(x = reorder(Nodes, eigenvector), y = eigenvector)) +
    coord_flip()
 
 
-
+ggsave("F5.pdf", dpi = "print", width = 24, height = 20, units = "cm")
 
 
 save.image("ResultsPreProcessingNetworkData.RData")
