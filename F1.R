@@ -3,6 +3,16 @@ load("SelectedKeywords.RData")
 df$keyword <- tolower(df$keyword)
 Network <- df[,c(7,8)]
 network <- unique( Network[ , c('pattern','Month') ] )
+keywords <- c("ai", "architecture", "jobs", "algorithmic bias", "detailed responses", "human trainers", 
+              "large language models", "jailbreak", "generative pre-trained transformer", 
+              "bing chat", "algorithm", "hugging face", "application programming interface", 
+              "natural language", "platform", "human intelligence")
+library(dplyr)
+library(stringr)
+# Filtering the dataframe
+network <- network %>%
+   filter(str_detect(pattern, paste(keywords, collapse = "|", sep = "")))
+
 library(igraph)
 bn2 <- graph.data.frame(network, directed = FALSE)
 bipartite.mapping(bn2)
