@@ -61,6 +61,12 @@ graph.density(net6)
 diameter(net6)
 summary(net6)
 
+
+
+
+
+
+
 library(grid)
 par(mfrow = c(2, 3))
 
