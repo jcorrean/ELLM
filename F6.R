@@ -23,3 +23,4 @@ categorize_term <- function(term) {
 }
 
 Network$Category <- apply(Network[, 1, drop = FALSE], 1, categorize_term)
+Network$Month <- NULL
