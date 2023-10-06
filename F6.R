@@ -55,34 +55,34 @@ plotweb(am, method = "normal",
         y.lim=c(0,3), arrow="both", adj.high=c(0.5,1.5),
         high.lablength=11,high.lab.dis=0)
 
-
-plotweb(am, col.high = c("green4", "red", "orange"), 
+par(mfrow = c(1, 1))
+par(plt = c(0.1, 0.9, 0.1, 0.9))
+par(xpd = NA)
+par(mar = c(5, 4, 4, 2) + 0.1)
+par(pty = "s")
+plot.new()
+plot.window(c(1, 0), c(1, 0))
+usr <- par("usr")
+rect(usr[1], usr[3], usr[2], usr[4], col = "white")
+par(srt = 90)
+pdf("F6.pdf", width = 15, height = 10)
+par(srt = 0)  # Reset the rotation to default
+plotweb(am, method = "normal", 
+        col.high = c("green4", "red", "orange"), 
         bor.col.high = "white",
         col.low = "#7113CF", 
         bor.col.low = "white",
         col.interaction = "grey90",
         bor.col.interaction = "grey90",
-        y.width.low=0.1, y.width.high=0.05,method="normal", 
-        y.lim=c(0,3), arrow="up.center", adj.high=c(0.5,1.5),
-        high.lablength=10,high.lab.dis=0)
-
-
-
-visweb(t(AM), type = "diagonal", square="b", circles = FALSE, box.col="#7113CF",box.border="#5464C8", labsize = 4, textsize = 4, plotsize = 6)
-
-V(bn2)$color <- ifelse(V(bn2)$type, "lightblue1", "#5464C8")
-V(bn2)$shape <- ifelse(V(bn2)$type, "none", "none")
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 5, 2)
-# Set the label size for the vertices (you can adjust this as needed)
-
-# Set the color of the edges
-E(bn2)$color <- "lightgrey"
-
-# Create a layout for the graph with the desired rotation
-layout <- layout_as_bipartite(bn2)
-rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates and negate y
-pdf("F6.pdf", width = 35, height = 40)
-plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "",
-     vertex.label.color = ifelse(V(bn2)$color == "lightblue1", "#7113CF", "#5464C8"))
+        low.lablength = 30,
+        text.rot = 90,
+        labsize = 1.1,
+        low.plot = TRUE, 
+        text.high.col="black",
+        low.spacing = 0.005,
+        y.width.low=0.1, y.width.high=0.05, 
+        y.lim=c(0,3), arrow="both", adj.high=c(0.5,1.5),
+        high.lablength=11,high.lab.dis=0)
 dev.off()
+
 save.image("ResultsF6.RData")
