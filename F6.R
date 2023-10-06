@@ -31,22 +31,16 @@ bipartite.mapping(bn2)
 V(bn2)$type <- bipartite_mapping(bn2)$type
 V(bn2)$color <- ifelse(V(bn2)$type, "lightblue1", "#5464C8")
 V(bn2)$shape <- ifelse(V(bn2)$type, "none", "none")
-
+V(bn2)$label.cex <- ifelse(V(bn2)$type, 5, 2)
 # Set the label size for the vertices (you can adjust this as needed)
-V(bn2)$label.cex <- ifelse(V(bn2)$type, 1, 1)
 
 # Set the color of the edges
 E(bn2)$color <- "lightgrey"
 
 # Create a layout for the graph with the desired rotation
-layout <- layout_as_tree(bn2)
-rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates and negate y
-
-# Plot the graph with the rotated layout and vertex labels
-plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "",
-     vertex.label.color = ifelse(V(bn2)$shape == "circle", "red", "black"))
-
 layout <- layout_as_bipartite(bn2)
 rotated_layout <- cbind(layout[, 2], -layout[, 1])  # Swap x and y coordinates and negate y
+pdf("F6.pdf", width = 15, height = 30)
 plot(bn2, vertex.label = V(bn2)$name, layout = rotated_layout, main = "",
      vertex.label.color = ifelse(V(bn2)$color == "lightblue1", "black", "#5464C8"))
+dev.off()
