@@ -38,50 +38,24 @@ am <- am %>%
    arrange_all(desc)
 
 library(bipartite)
+pdf("F6.pdf", width = 15, height = 20)
+par(srt = 90)  # Reset the rotation to default
 plotweb(am, method = "normal", 
+        ybig = 6,
         col.high = c("green4", "red", "orange"), 
         bor.col.high = "white",
         col.low = "#7113CF", 
-        bor.col.low = "white",
-        col.interaction = "grey90",
-        bor.col.interaction = "grey90",
-        low.lablength = 30,
+        bor.col.low = "#7113CF",
+        col.interaction = "grey70",
+        bor.col.interaction = "grey70",
+        low.lablength = 35,
         text.rot = 90,
-        labsize = 1.1,
+        labsize = 1.7,
         low.plot = TRUE, 
         text.high.col="black",
         low.spacing = 0.005,
         y.width.low=0.1, y.width.high=0.05, 
-        y.lim=c(0,3), arrow="both", adj.high=c(0.5,1.5),
-        high.lablength=11,high.lab.dis=0)
-
-par(mfrow = c(1, 1))
-par(plt = c(0.1, 0.9, 0.1, 0.9))
-par(xpd = NA)
-par(mar = c(5, 4, 4, 2) + 0.1)
-par(pty = "s")
-plot.new()
-plot.window(c(1, 0), c(1, 0))
-usr <- par("usr")
-rect(usr[1], usr[3], usr[2], usr[4], col = "white")
-par(srt = 90)
-pdf("F6.pdf", width = 15, height = 10)
-par(srt = 0)  # Reset the rotation to default
-plotweb(am, method = "normal", 
-        col.high = c("green4", "red", "orange"), 
-        bor.col.high = "white",
-        col.low = "#7113CF", 
-        bor.col.low = "white",
-        col.interaction = "grey90",
-        bor.col.interaction = "grey90",
-        low.lablength = 30,
-        text.rot = 90,
-        labsize = 1.1,
-        low.plot = TRUE, 
-        text.high.col="black",
-        low.spacing = 0.005,
-        y.width.low=0.1, y.width.high=0.05, 
-        y.lim=c(0,3), arrow="both", adj.high=c(0.5,1.5),
+        y.lim=c(0,3), arrow="up", adj.high=c(0.5,1.5),
         high.lablength=11,high.lab.dis=0)
 dev.off()
 
