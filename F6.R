@@ -24,6 +24,8 @@ categorize_term <- function(term) {
 
 Network$Category <- apply(Network[, 1, drop = FALSE], 1, categorize_term)
 Network$Month <- NULL
+Network <- subset(Network, pattern != "bing chat")
+Network <- subset(Network, pattern != "application programming interface")
 
 library(igraph)
 bn2 <- graph.data.frame(Network, directed = FALSE)
